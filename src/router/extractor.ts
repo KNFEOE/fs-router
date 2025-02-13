@@ -1,23 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { NESTED_ROUTE } from './constants';
-
-interface RouteNode {
-  id?: string;
-  path?: string;
-  _component?: string;
-  loader?: string;
-  config?: string;
-  data?: string;
-  clientData?: string;
-  error?: string;
-  loading?: string;
-  children?: RouteNode[];
-  index?: boolean;
-  isRoot?: boolean;
-  type?: 'nested';
-  action?: string;
-}
+import { RouteNode } from './type';
 
 /**
  * @class RouteExtractor
