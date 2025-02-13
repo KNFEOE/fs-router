@@ -22,6 +22,7 @@ interface RouteNode {
 /**
  * @class RouteScanner
  * @description The RouteScanner class is responsible for scanning the routes directory and generating the route tree.
+ * @inspiration Thanks to {@link [Modern.js runtime/router](https://github.com/web-infra-dev/modern.js/blob/main/packages/runtime/plugin-runtime/src/router/cli/code/nestedRoutes.ts)} & Github Copilot
  */
 export class RouteScanner {
   private readonly routesDir: string;
