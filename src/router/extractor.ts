@@ -20,11 +20,11 @@ interface RouteNode {
 }
 
 /**
- * @class RouteScanner
- * @description The RouteScanner class is responsible for scanning the routes directory and generating the route tree.
+ * @class RouteExtractor
+ * @description The RouteExtractor class is responsible for scanning the routes directory and generating the route tree.
  * @inspiration Thanks to {@link [Modern.js runtime/router](https://github.com/web-infra-dev/modern.js/blob/main/packages/runtime/plugin-runtime/src/router/cli/code/nestedRoutes.ts)} & Github Copilot
  */
-export class RouteScanner {
+export class RouteExtractor {
   private readonly routesDir: string;
   private readonly extensions = ['.js', '.jsx', '.ts', '.tsx'];
   private readonly entryName: string;
@@ -36,7 +36,7 @@ export class RouteScanner {
     this.isMainEntry = isMainEntry;
   }
 
-  async scan(): Promise<RouteNode[]> {
+  async extract(): Promise<RouteNode[]> {
     const route = await this.walkDirectory(this.routesDir);
     if (!route) return [];
     return this.optimizeRoute(route);

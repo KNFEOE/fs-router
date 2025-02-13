@@ -1,13 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { RouteScanner } from '../../src/router/scanner';
+import { RouteExtractor } from '../../src/router/extractor';
 import * as path from 'path';
 
-describe('RouteScanner', () => {
+describe('RouteExtractor', () => {
   const fixturesDir = path.join(__dirname, '../fixtures/nested-routes');
 
   it('should scan nested routes correctly', async () => {
-    const scanner = new RouteScanner(fixturesDir);
-    const routes = await scanner.scan();
+    const extractor = new RouteExtractor(fixturesDir);
+    const routes = await extractor.extract();
 
     console.log(JSON.stringify(routes, null, 2));
 
@@ -138,8 +138,8 @@ describe('RouteScanner', () => {
   });
 
   it('should handle associated files correctly', async () => {
-    const scanner = new RouteScanner(fixturesDir);
-    const routes = await scanner.scan();
+    const extractor = new RouteExtractor(fixturesDir);
+    const routes = await extractor.extract();
 
     expect(routes[0].config).toBe('layout.config.ts');
     expect(routes[0].loader).toBe('layout.loader.ts');
