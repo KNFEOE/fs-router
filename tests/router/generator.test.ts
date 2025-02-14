@@ -5,10 +5,16 @@ import { RouteExtractor } from '../../src/router/extractor';
 import * as path from 'path';
 
 describe('RouteCodeGenerator', () => {
-  const fixturesDir = path.join(__dirname, '../fixtures/nested-routes');
+  const routesDir = path.join(__dirname, '../fixtures/admin-routes');
 
   it('should generate route code with default options', async () => {
-    const extractor = new RouteExtractor(fixturesDir);
+    const extractor = new RouteExtractor({
+      routesDir,
+      alias: {
+        name: '@',
+        basename: 'tests/fixtures/'
+      }
+    });
     const routes = await extractor.extract();
     const generator = new RouteCodeGenerator();
     const code = generator.generate(routes);
@@ -22,7 +28,7 @@ describe('RouteCodeGenerator', () => {
   });
 
   it('should generate route code without code splitting', async () => {
-    const extractor = new RouteExtractor(fixturesDir);
+    const extractor = new RouteExtractor({ routesDir });
     const routes = await extractor.extract();
     const generator = new RouteCodeGenerator({ splitting: false });
     const code = generator.generate(routes);
