@@ -46,4 +46,6 @@ export const NESTED_ROUTE = {
   LOADING_FILE: 'loading',
   ERROR_FILE: 'error',
   LOADER_FILE: 'loader',
-};
+} as const;
+
+export const JS_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx'] as const;

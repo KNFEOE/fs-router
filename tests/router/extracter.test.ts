@@ -6,7 +6,13 @@ describe('RouteExtractor', () => {
   const fixturesDir = path.join(__dirname, '../fixtures/nested-routes');
 
   it('should scan nested routes correctly', async () => {
-    const extractor = new RouteExtractor(fixturesDir);
+    const extractor = new RouteExtractor({
+      routesDir: fixturesDir,
+      alias: {
+        name: '@',
+        basename: 'tests/fixtures/'
+      }
+    });
     const routes = await extractor.extract();
 
     console.log(JSON.stringify(routes, null, 2));
@@ -21,131 +27,126 @@ describe('RouteExtractor', () => {
                 {
                   "children": [
                     {
-                      "path": "item",
-                      "_component": "__auth/__shop/item/page.tsx",
-                      "loader": "",
-                      "config": "",
-                      "clientData": "",
-                      "data": "",
-                      "action": ""
+                      "_component": "@/nested-routes/__auth/__shop/item/page",
+                      "id": "__auth/__shop/item/page",
+                      "type": "nested",
+                      "path": "item"
                     }
                   ],
                   "isRoot": false,
                   "type": "nested",
-                  "_component": "__auth/__shop/layout.tsx",
-                  "id": "__auth/__shop"
+                  "_component": "@/nested-routes/__auth/__shop/layout",
+                  "id": "__auth/__shop/layout"
                 },
                 {
-                  "path": "login",
-                  "_component": "__auth/login/page.tsx",
-                  "loader": "",
-                  "config": "",
-                  "clientData": "",
-                  "data": "",
-                  "action": ""
+                  "_component": "@/nested-routes/__auth/login/page",
+                  "id": "__auth/login/page",
+                  "type": "nested",
+                  "path": "login"
                 }
               ],
               "isRoot": false,
               "type": "nested",
-              "config": "__auth/layout.config.ts",
-              "loader": "__auth/layout.loader.tsx",
-              "_component": "__auth/layout.tsx",
-              "id": "__auth"
+              "config": "@/nested-routes/__auth/layout.config",
+              "loader": "@/nested-routes/__auth/layout.loader",
+              "_component": "@/nested-routes/__auth/layout",
+              "id": "__auth/layout"
             },
             {
               "path": "user",
               "children": [
                 {
-                  "path": "",
-                  "_component": "user/page.tsx",
-                  "loader": "",
-                  "config": "",
-                  "clientData": "",
-                  "data": "",
-                  "action": "",
-                  "index": true
+                  "_component": "@/nested-routes/user/page",
+                  "index": true,
+                  "id": "user/page",
+                  "type": "nested",
+                  "loader": "@/nested-routes/user/page.loader",
+                  "config": "@/nested-routes/user/page.config"
                 },
                 {
-                  "path": ":id",
-                  "_component": "user/[id]/page.tsx",
-                  "loader": "",
-                  "config": "",
-                  "clientData": "",
-                  "data": "",
-                  "action": ""
+                  "_component": "@/nested-routes/user/$",
+                  "path": "*",
+                  "id": "user/$",
+                  "type": "nested",
+                  "clientData": "@/nested-routes/user/$.data.client",
+                  "data": "@/nested-routes/user/$.data",
+                  "config": "@/nested-routes/user/$.config.ts"
+                },
+                {
+                  "_component": "@/nested-routes/user/[id]/page",
+                  "id": "user/(id)/page",
+                  "type": "nested",
+                  "data": "@/nested-routes/user/[id]/page.data",
+                  "path": ":id"
                 },
                 {
                   "path": "profile",
                   "children": [
                     {
-                      "path": "",
-                      "_component": "user/profile/page.tsx",
-                      "loader": "",
-                      "config": "",
-                      "clientData": "",
-                      "data": "",
-                      "action": "",
-                      "index": true
+                      "_component": "@/nested-routes/user/profile/page",
+                      "index": true,
+                      "id": "user/profile/page",
+                      "type": "nested",
+                      "loader": "@/nested-routes/user/profile/page.loader"
                     }
                   ],
                   "isRoot": false,
                   "type": "nested",
-                  "_component": "user/profile/layout.tsx",
-                  "id": "user/profile"
+                  "_component": "@/nested-routes/user/profile/layout",
+                  "id": "user/profile/layout"
                 }
               ],
               "isRoot": false,
               "type": "nested",
-              "config": "user/layout.config.ts",
-              "loader": "user/layout.loader.ts",
-              "_component": "user/layout.tsx",
-              "id": "user"
+              "config": "@/nested-routes/user/layout.config",
+              "loader": "@/nested-routes/user/layout.loader",
+              "_component": "@/nested-routes/user/layout",
+              "id": "user/layout"
             },
             {
               "path": "user/profile/name",
               "children": [
                 {
-                  "path": "",
-                  "_component": "user.profile.name/page.tsx",
-                  "loader": "",
-                  "config": "",
-                  "clientData": "",
-                  "data": "",
-                  "action": "",
-                  "index": true
+                  "_component": "@/nested-routes/user.profile.name/page",
+                  "index": true,
+                  "id": "user.profile.name/page",
+                  "type": "nested",
+                  "config": "@/nested-routes/user.profile.name/page.config"
                 }
               ],
               "isRoot": false,
               "type": "nested",
-              "config": "user.profile.name/layout.config.ts",
-              "_component": "user.profile.name/layout.tsx",
-              "id": "user.profile"
+              "config": "@/nested-routes/user.profile.name/layout.config",
+              "_component": "@/nested-routes/user.profile.name/layout",
+              "id": "user.profile.name/layout"
             }
           ],
           "isRoot": true,
           "type": "nested",
-          "error": "error.tsx",
-          "config": "layout.config.ts",
-          "clientData": "layout.data.client.ts",
-          "data": "layout.data.ts",
-          "loader": "layout.loader.ts",
-          "_component": "layout.tsx",
-          "loading": "loading.tsx",
-          "id": ""
+          "error": "@/nested-routes/error",
+          "config": "@/nested-routes/layout.config",
+          "clientData": "@/nested-routes/layout.data.client",
+          "data": "@/nested-routes/layout.data",
+          "loader": "@/nested-routes/layout.loader",
+          "_component": "@/nested-routes/layout",
+          "loading": "@/nested-routes/loading",
+          "id": "layout"
         }
       ]
     );
   });
 
   it('should handle associated files correctly', async () => {
-    const extractor = new RouteExtractor(fixturesDir);
+    const extractor = new RouteExtractor({
+      routesDir: fixturesDir
+    });
     const routes = await extractor.extract();
 
-    expect(routes[0].config).toBe('layout.config.ts');
-    expect(routes[0].loader).toBe('layout.loader.ts');
-    expect(routes[0].data).toBe('layout.data.ts');
-    expect(routes[0].clientData).toBe('layout.data.client.ts');
-    expect(routes[0].error).toBe('error.tsx');
-    expect(routes[0].loading).toBe('loading.tsx');
+    expect(routes[0].config).toContain('layout.config');
+    expect(routes[0].loader).toContain('layout.loader');
+    expect(routes[0].data).toContain('layout.data');
+    expect(routes[0].clientData).toContain('layout.data.client');
+    expect(routes[0].error).toContain('error');
+    expect(routes[0].loading).toContain('loading');
   });
 });

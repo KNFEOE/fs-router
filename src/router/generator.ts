@@ -11,6 +11,7 @@ export class RouteCodeGenerator {
   private readonly options: RouteCodeGeneratorOptions;
   private imports: Set<string> = new Set();
   private loaderImports: Set<string> = new Set();
+  private configImports: Set<string> = new Set();
 
   constructor(options?: RouteCodeGeneratorOptions) {
     this.options = {
@@ -152,6 +153,14 @@ export class RouteCodeGenerator {
     return loaders[0];
   }
 
+  private generateConfigCode(route: any): string {
+    if (!route.config) return '';
+
+    const configName = `config_${this.configImports.size}`;
+    this.configImports.add(`import * as ${configName} from '${route.config}';`);
+    return configName;
+  }
+
   private wrapWithImports(routeCode: string): string {
     const runtimeImports = [];
 
@@ -187,6 +196,7 @@ function DefaultErrorBoundary() {
     return `${runtimeImports.join('\n')}
 ${Array.from(this.imports).join('\n')}
 ${Array.from(this.loaderImports).join('\n')}
+${Array.from(this.configImports).join('\n')}
 
 ${routeCode}`;
   }
