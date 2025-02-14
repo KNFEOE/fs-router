@@ -4,6 +4,7 @@ export interface PluginConfig {
   routesDirectory: string;
   generatedRoutesPath: string;
   routeExtensions?: string[];
+  enableGeneration?: boolean;
   alias?: {
     name: string;
     basename: string;
@@ -17,6 +18,7 @@ const defaultConfig: PluginConfig = {
   generatedRoutesPath: 'src/generated/routes.tsx',
   routeExtensions: ['.js', '.jsx', '.ts', '.tsx'],
   splitting: true,
+  enableGeneration: true,
   defaultErrorBoundary: true
 };
 
