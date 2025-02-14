@@ -6,7 +6,9 @@ export default defineConfig({
       source: {
         entry: {
           index: 'src/index.ts',
-          plugin: 'src/plugin/index.ts',
+          rspack: 'src/plugin/rspack.ts',
+          webpack: 'src/plugin/webpack.ts',
+          vite: 'src/plugin/vite.ts',
         },
       },
       format: 'esm',
@@ -17,7 +19,9 @@ export default defineConfig({
       source: {
         entry: {
           index: 'src/index.ts',
-          plugin: 'src/plugin/index.ts',
+          rspack: 'src/plugin/rspack.ts',
+          webpack: 'src/plugin/webpack.ts',
+          vite: 'src/plugin/vite.ts',
         },
       },
       format: 'cjs',
