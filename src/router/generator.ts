@@ -112,6 +112,16 @@ export class RouteCodeGenerator {
     return actionName;
   }
 
+  // Do we need to handle route config? not yet maybe!
+  private generateConfigCode(route: any): string {
+    if (!route.config) return '';
+
+    const configName = `config_${this.configImports.size}`;
+    this.configImports.add(`import * as ${configName} from '${route.config}';`);
+
+    return configName;
+  }
+
   private generateLoaderCode(route: RouteNode): string {
     const loaders = [];
 
@@ -151,14 +161,6 @@ export class RouteCodeGenerator {
     }
 
     return loaders[0];
-  }
-
-  private generateConfigCode(route: any): string {
-    if (!route.config) return '';
-
-    const configName = `config_${this.configImports.size}`;
-    this.configImports.add(`import * as ${configName} from '${route.config}';`);
-    return configName;
   }
 
   private wrapWithImports(routeCode: string): string {
