@@ -1,5 +1,5 @@
 {
-  "name": "file-base-react-router",
+  "name": "file-router",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -8,10 +8,20 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./plugin": {
-      "types": "./dist/plugin/index.d.ts",
-      "import": "./dist/plugin.js",
-      "require": "./dist/plugin.cjs"
+    "./rspack": {
+      "types": "./dist/plugin/index/rspack.d.ts",
+      "import": "./dist/rspack.js",
+      "require": "./dist/rspack.cjs"
+    },
+    "./webpack": {
+      "types": "./dist/plugin/index/webpack.d.ts",
+      "import": "./dist/webpack.js",
+      "require": "./dist/webpack.cjs"
+    },
+    "./vite": {
+      "types": "./dist/plugin/index/vite.d.ts",
+      "import": "./dist/vite.js",
+      "require": "./dist/vite.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -26,6 +36,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@rslib/core": "^0.4.1",
     "@types/node": "^22.8.1",
     "@types/react": "^18.2.48",
@@ -37,6 +48,7 @@
     "@react-router/dev": "^7.1.5",
     "chokidar": "^4.0.3",
     "react-router": "^7.1.5",
+    "react-router-dom": "^7.1.5",
     "typescript": "^5.0.0",
     "unplugin": "^2.1.2"
   },
