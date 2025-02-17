@@ -8,7 +8,7 @@ const VIRTUAL_ROUTE_ID = "virtual:generated-routes";
 const RESOLVED_VIRTUAL_ROUTE_ID = `\0${VIRTUAL_ROUTE_ID}`;
 const PLUGIN_NAME = "unplugin:file-based-router-generator";
 
-interface RouterGeneratorPluginContext {
+export interface RouterGeneratorPluginContext {
   root: string;
   config: PluginConfig;
   watcher: FSWatcher | null;
@@ -16,6 +16,14 @@ interface RouterGeneratorPluginContext {
   generated: boolean;
 }
 
+/**
+ * Router generator plugin factory
+ *
+ * @description This factory is inspired by the `router-generator-plugin` from TanStack's `router` package.
+ * @inspiration {@see @link [packages/router-plugin/src/core/router-generator-plugin.ts](https://github.com/TanStack/router/blob/main/packages/router-plugin/src/core/router-generator-plugin.ts)}
+ * @param userOptions
+ * @returns
+ */
 export const unpluginRouterGeneratorFactory: UnpluginFactory<
   Partial<PluginConfig> | undefined
 > = (userOptions = {}) => {
