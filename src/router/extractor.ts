@@ -1,8 +1,13 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { NESTED_ROUTE, JS_EXTENSIONS } from './constants';
-import { RouteNode } from './type';
-import { getPathWithoutExt, hasAction, replaceWithAlias, normalizeToPosixPath } from './utils';
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { NESTED_ROUTE, JS_EXTENSIONS } from "./constants";
+import type { RouteNode } from "./type";
+import {
+  getPathWithoutExt,
+  hasAction,
+  replaceWithAlias,
+  normalizeToPosixPath,
+} from "./utils";
 
 export interface AliasOptions {
   name: string;
@@ -16,12 +21,11 @@ export interface ExtractorOptions {
   alias?: AliasOptions;
 }
 
-export type NestedRouteType = typeof NESTED_ROUTE
-export type ExtensionNameType = '.js' | '.jsx' | '.ts' | '.tsx'
-export type ConventionNameType = NestedRouteType[keyof NestedRouteType]
+export type NestedRouteType = typeof NESTED_ROUTE;
+export type ExtensionNameType = ".js" | ".jsx" | ".ts" | ".tsx";
+export type ConventionNameType = NestedRouteType[keyof NestedRouteType];
 
 const conventionNames: ConventionNameType[] = Object.values(NESTED_ROUTE);
-
 
 /**
  * @class RouteExtractor
@@ -37,11 +41,11 @@ export class RouteExtractor {
 
   constructor(options: ExtractorOptions) {
     this.routesDir = options.routesDir;
-    this.entryName = options.entryName || 'main';
+    this.entryName = options.entryName || "main";
     this.isMainEntry = options.isMainEntry ?? true;
     this.alias = options.alias || {
-      name: '',
-      basename: '',
+      name: "",
+      basename: "",
     };
   }
 
@@ -52,7 +56,12 @@ export class RouteExtractor {
   }
 
   private async walkDirectory(dirname: string): Promise<RouteNode | null> {
-    if (!await fs.promises.access(dirname).then(() => true).catch(() => false)) {
+    if (
+      !(await fs.promises
+        .access(dirname)
+        .then(() => true)
+        .catch(() => false))
+    ) {
       return null;
     }
 
@@ -62,42 +71,42 @@ export class RouteExtractor {
       return null;
     }
 
-    const alias = this.alias
+    const alias = this.alias;
     const relativeDir = path.relative(this.routesDir, dirname);
     const pathSegments = relativeDir.split(path.sep);
     const lastSegment = pathSegments[pathSegments.length - 1];
-    const isRoot = lastSegment === '';
-    const isPathlessLayout = lastSegment.startsWith('__');
-    const isWithoutLayoutPath = lastSegment.includes('.');
+    const isRoot = lastSegment === "";
+    const isPathlessLayout = lastSegment.startsWith("__");
+    const isWithoutLayoutPath = lastSegment.includes(".");
 
-    let routePath = isRoot || isPathlessLayout ? '/' : `${lastSegment}`;
+    let routePath = isRoot || isPathlessLayout ? "/" : `${lastSegment}`;
 
     if (isWithoutLayoutPath) {
-      routePath = lastSegment.split('.').join('/');
+      routePath = lastSegment.split(".").join("/");
     }
 
     routePath = this.replaceDynamicPath(routePath);
 
     const route: RouteNode = {
-      path: routePath?.replace(/\$$/, '?'),
+      path: routePath?.replace(/\$$/, "?"),
       children: [],
       isRoot,
-      type: 'nested'
+      type: "nested",
     };
 
-    let pageLoaderFile = '';
+    let pageLoaderFile = "";
     let pageRoute = null;
-    let pageConfigFile = '';
-    let pageClientData = '';
-    let pageData = '';
-    let pageAction = '';
+    let pageConfigFile = "";
+    let pageClientData = "";
+    let pageData = "";
+    let pageAction = "";
 
-    let splatLoaderFile = '';
+    let splatLoaderFile = "";
     let splatRoute = null;
-    let splatConfigFile = '';
-    let splatClientData = '';
-    let splatData = '';
-    let splatAction = '';
+    let splatConfigFile = "";
+    let splatClientData = "";
+    let splatData = "";
+    let splatAction = "";
 
     const entries = await fs.promises.readdir(dirname);
 
@@ -112,9 +121,7 @@ export class RouteExtractor {
       const isDirectory = (await fs.promises.stat(entryPath)).isDirectory();
 
       if (isDirectory) {
-        const childRoute = await this.walkDirectory(
-          entryPath,
-        );
+        const childRoute = await this.walkDirectory(entryPath);
 
         if (childRoute && !Array.isArray(childRoute)) {
           route.children?.push(childRoute);
@@ -232,7 +239,7 @@ export class RouteExtractor {
         splatRoute = this.createRoute(
           {
             _component: entryPathWithAlias,
-            path: '*',
+            path: "*",
           },
           entryPath,
         );
@@ -281,7 +288,7 @@ export class RouteExtractor {
     }
 
     const childRoutes = (finalRoute.children = finalRoute.children?.filter(
-      childRoute => childRoute,
+      (childRoute) => childRoute,
     ));
 
     if (
@@ -303,8 +310,8 @@ export class RouteExtractor {
     if (childRoutes && childRoutes.length === 1 && !finalRoute._component) {
       const childRoute = childRoutes[0];
 
-      if (childRoute.path === '*') {
-        const path = `${finalRoute.path || ''}/${childRoute.path || ''}`;
+      if (childRoute.path === "*") {
+        const path = `${finalRoute.path || ""}/${childRoute.path || ""}`;
 
         finalRoute = {
           ...childRoute,
@@ -315,7 +322,7 @@ export class RouteExtractor {
 
     if (isRoot && !finalRoute._component) {
       throw new Error(
-        'The root layout component is required, make sure the routes/layout.tsx file exists.',
+        "The root layout component is required, make sure the routes/layout.tsx file exists.",
       );
     }
 
@@ -334,11 +341,11 @@ export class RouteExtractor {
       !routeTree.config &&
       !routeTree.clientData
     ) {
-      const newRoutes = routeTree.children.map(child => {
-        const routePath = `${routeTree.path || ''}${child.path ? `/${child.path}` : ''}`;
+      const newRoutes = routeTree.children.map((child) => {
+        const routePath = `${routeTree.path || ""}${child.path ? `/${child.path}` : ""}`;
         const newRoute: RouteNode = {
           ...child,
-          path: routePath.replace(/\/\//g, '/'),
+          path: routePath.replace(/\/\//g, "/"),
         };
 
         // the index is removed when the route path exists
@@ -351,22 +358,26 @@ export class RouteExtractor {
         return newRoute;
       });
 
-      return Array.from(new Set(newRoutes)).flatMap(route => this.optimizeRoute(route));
+      return Array.from(new Set(newRoutes)).flatMap((route) =>
+        this.optimizeRoute(route),
+      );
     }
 
-    return [{
-      ...routeTree,
-      children: routeTree.children.flatMap(child => this.optimizeRoute(child))
-    }];
+    return [
+      {
+        ...routeTree,
+        children: routeTree.children.flatMap((child) =>
+          this.optimizeRoute(child),
+        ),
+      },
+    ];
   }
 
   private replaceDynamicPath(routePath: string): string {
-    return routePath.replace(/\[(.*?)\]/g, ':$1');
+    return routePath.replace(/\[(.*?)\]/g, ":$1");
   }
 
-  private getRouteId(
-    componentPath: string
-  ): string {
+  private getRouteId(componentPath: string): string {
     const relativePath = normalizeToPosixPath(
       path.relative(this.routesDir, componentPath),
     );
@@ -380,11 +391,11 @@ export class RouteExtractor {
       id = `${this.entryName}_${pathWithoutExt}`;
     }
 
-    return id.replace(/\[(.*?)\]/g, '($1)');
+    return id.replace(/\[(.*?)\]/g, "($1)");
   }
 
   private isValidFile(filename: string): boolean {
-    const ext = path.extname(filename) as '.js' | '.jsx' | '.ts' | '.tsx';
+    const ext = path.extname(filename) as ".js" | ".jsx" | ".ts" | ".tsx";
     return this.extensions.includes(ext);
   }
 
@@ -394,7 +405,7 @@ export class RouteExtractor {
     }
 
     return getPathWithoutExt(
-      replaceWithAlias(this.alias.basename, filepath, this.alias.name)
+      replaceWithAlias(this.alias.basename, filepath, this.alias.name),
     );
   }
 
@@ -407,13 +418,13 @@ export class RouteExtractor {
     return {
       ...routeInfo,
       id,
-      type: 'nested',
+      type: "nested",
     };
   }
 
   private createIndexRoute(
     routeInfo: Partial<RouteNode>,
-    componentPath: string
+    componentPath: string,
   ): Partial<RouteNode> {
     return this.createRoute(
       {
@@ -423,17 +434,24 @@ export class RouteExtractor {
       },
       componentPath,
     );
-  };
+  }
 
-  private createSplatRoute(splatFile: string, splatLoader: string, splatConfig: string, splatClientData: string, splatData: string, splatAction: string): RouteNode {
+  private createSplatRoute(
+    splatFile: string,
+    splatLoader: string,
+    splatConfig: string,
+    splatClientData: string,
+    splatData: string,
+    splatAction: string,
+  ): RouteNode {
     return {
-      path: '*',
+      path: "*",
       _component: splatFile,
       loader: splatLoader,
       config: splatConfig,
       clientData: splatClientData,
       data: splatData,
-      action: splatAction
+      action: splatAction,
     };
   }
 }
