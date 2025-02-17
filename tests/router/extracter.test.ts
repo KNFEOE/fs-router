@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { RouteExtractor } from '../../src/router/extractor';
-import * as path from 'path';
+import * as path from 'node:path';
 
 describe('RouteExtractor', () => {
   const fixturesDir = path.join(__dirname, '../fixtures/nested-routes');

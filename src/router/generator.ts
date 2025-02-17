@@ -1,17 +1,30 @@
 import * as path from "node:path";
 import type { RouteNode } from "./type";
+import type { ActionFunction, LoaderFunction, RouteObject } from "react-router-dom";
 
 interface RouteCodeGeneratorOptions {
   splitting?: boolean;
-  defaultErrorBoundary?: boolean; // 是否为所有路由添加默认错误边界
-  defaultLoadingFallback?: null; // 是否为所有路由添加默认 Suspense Fallback
 }
 
 export class RouteCodeGenerator {
   private readonly options: RouteCodeGeneratorOptions;
-  private imports: Set<string> = new Set();
+  /**
+   * runtime imports
+   * 使用 loadable 替换 lazy
+   */
+  private runtimeImports: Set<string> = new Set([
+    `import loadable from '@loadable/component';`
+  ]);
+  /** loader imports */
   private loaderImports: Set<string> = new Set();
+  /** loading imports */
+  private loadingImports: Set<string> = new Set();
+  /** error imports */
+  private errorImports: Set<string> = new Set();
+  /** config imports */
   private configImports: Set<string> = new Set();
+  /** component declarations */
+  private componentDeclarations: Set<string> = new Set();
 
   constructor(options?: RouteCodeGeneratorOptions) {
     this.options = {
@@ -37,15 +50,15 @@ export class RouteCodeGenerator {
   private stringifyRoute(route: RouteNode): string {
     const element = this.generateElementCode(route);
     const errorElement = this.generateErrorElement(route);
-    const loader = this.generateLoaderCode(route);
-    const action = this.generateActionCode(route);
+    const loader = this.generateLoaderCode(route) as unknown as LoaderFunction<any> | undefined;
+    const action = this.generateActionCode(route) as unknown as ActionFunction<any> | undefined;
 
-    const routeObj = {
+    const routeObj: RouteObject = {
       path: route.path,
       index: route.index,
-      element: element || undefined,
       errorElement: errorElement || undefined,
       loader: loader || undefined,
+      element: element || undefined,
       action: action || undefined,
       children: undefined,
     };
@@ -80,35 +93,44 @@ export class RouteCodeGenerator {
       path.basename(route._component, path.extname(route._component));
 
     if (route.isRoot) {
-      this.imports.add(`import RootLayout from '${route._component}';`);
+      this.runtimeImports.add(`import RootLayout from '${route._component}';`);
       return "<RootLayout />";
     }
 
     if (this.options.splitting) {
-      const componentName = `Component_${this.imports.size}`;
       const importPath = route._component;
+      const componentName = `Component_${this.componentDeclarations.size}`;
+
+      let loadingComponent = '';
+
+      if (route.loading) {
+        const loadingName = `Loading_${this.loadingImports.size}`;
+
+        this.loadingImports.add(`import ${loadingName} from '${route.loading}';`);
+        loadingComponent = `, { fallback: <${loadingName} /> }`;
+      }
+
       // Define component using loadable for code splitting
-      this.imports.add(
-        `const ${componentName} = loadable(() => import(/* webpackChunkName: "${chunkName}" */ '${importPath}')${route.loading
-          ? `, { fallback: loadable(() => import('${route.loading}'))() }`
-          : this.options.defaultLoadingFallback ? `, { fallback: ${this.options.defaultLoadingFallback} }` : ''
-        });`
+      this.componentDeclarations.add(
+        `const ${componentName} = loadable(() => import(/* webpackChunkName: "${chunkName}" */ '${importPath}')${loadingComponent});`
       );
+
       return `<${componentName} />`;
     }
 
-    const componentName = `Component_${this.imports.size}`;
-    this.imports.add(`import ${componentName} from '${route._component}';`);
+    const componentName = `Component_${this.componentDeclarations.size}`;
+    this.componentDeclarations.add(`import ${componentName} from '${route._component}';`);
 
     return `<${componentName} />`;
   }
 
   private generateErrorElement(route: RouteNode): string {
-    if (!route.error) {
-      return this.options.defaultErrorBoundary ? "<DefaultErrorBoundary />" : "";
-    }
+    if (!route.error) return "";
 
-    return `loadable(() => import('${route.error}'))`;
+    const errorName = `Error_${this.errorImports.size}`;
+    this.errorImports.add(`import ${errorName} from '${route.error}';`);
+
+    return `<${errorName} />`;
   }
 
   // 新增 action 处理
@@ -173,41 +195,17 @@ export class RouteCodeGenerator {
   }
 
   private wrapWithImports(routeCode: string): string {
-    const runtimeImports = [];
+    const runtimeImports = [
+      ...Array.from(this.runtimeImports),
+      ...Array.from(this.loaderImports),
+      ...Array.from(this.configImports),
+      ...Array.from(this.loadingImports),
+      ...Array.from(this.errorImports),
+    ];
 
-    // 使用 loadable 替换 lazy
-    runtimeImports.push(`import loadable from '@loadable/component';`);
-
-    if (this.options.defaultErrorBoundary) {
-      runtimeImports.push(`
-import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
-
-function DefaultErrorBoundary() {
-  const error = useRouteError();
-  
-  if (isRouteErrorResponse(error)) {
-    return (
-      <div>
-        <h1>{error.status} {error.statusText}</h1>
-        <p>{error.data?.message}</p>
-      </div>
-    );
-  }
-  
-  return (
-    <div>
-      <h1>Oops!</h1>
-      <p>Something went wrong</p>
-    </div>
-  );
-}
-`);
-    }
-
-    return `${runtimeImports.join("\n")}
-${Array.from(this.imports).join("\n")}
-${Array.from(this.loaderImports).join("\n")}
-${Array.from(this.configImports).join("\n")}
+    return `
+${runtimeImports.join("\n")}
+${this.componentDeclarations.size ? Array.from(this.componentDeclarations).join("\n") : ""}
 
 ${routeCode}`;
   }
