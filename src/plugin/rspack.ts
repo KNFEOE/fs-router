@@ -1,6 +1,6 @@
-import { createRspackPlugin } from 'unplugin'
-import { unpluginRouterGeneratorFactory } from './factory'
-import { PluginConfig } from './config'
+import { createRspackPlugin } from "unplugin";
+import { unpluginRouterGeneratorFactory } from "./factory";
+import type { PluginConfig } from "./config";
 
 /**
  * @example
@@ -17,10 +17,7 @@ import { PluginConfig } from './config'
  */
 const FileBasedRouterRspack = createRspackPlugin(
   unpluginRouterGeneratorFactory,
-)
+);
 
-export {
-  FileBasedRouterRspack,
-  type PluginConfig,
-}
-export default FileBasedRouterRspack
+export { FileBasedRouterRspack, type PluginConfig };
+export default FileBasedRouterRspack;

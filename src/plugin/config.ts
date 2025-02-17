@@ -1,4 +1,4 @@
-import { resolve, isAbsolute, join } from 'path';
+import { resolve, isAbsolute, join } from 'node:path';
 
 export interface PluginConfig {
   routesDirectory: string;
@@ -13,16 +13,20 @@ export interface PluginConfig {
   defaultErrorBoundary?: boolean;
 }
 
-const defaultConfig: PluginConfig = {
+export const defaultConfig: PluginConfig = {
   routesDirectory: 'src/routes',
-  generatedRoutesPath: 'src/generated/routes.tsx',
+  generatedRoutesPath: 'src/routes.tsx',
   routeExtensions: ['.js', '.jsx', '.ts', '.tsx'],
   splitting: true,
+  alias: {
+    name: '@',
+    basename: 'src',
+  },
   enableGeneration: true,
-  defaultErrorBoundary: true
+  defaultErrorBoundary: false,
 };
 
-export const getConfig = (options: Partial<PluginConfig> = {}, root: string): PluginConfig => {
+export const getConfig = (options: Partial<PluginConfig>, root: string): PluginConfig => {
   const config = { ...defaultConfig, ...options };
 
   // Resolve absolute paths

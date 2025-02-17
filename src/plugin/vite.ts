@@ -1,6 +1,6 @@
-import { createVitePlugin } from 'unplugin'
-import { unpluginRouterGeneratorFactory } from './factory'
-import { PluginConfig } from './config'
+import { createVitePlugin } from "unplugin";
+import { unpluginRouterGeneratorFactory } from "./factory";
+import type { PluginConfig } from "./config";
 
 /**
  * @example
@@ -15,12 +15,7 @@ import { PluginConfig } from './config'
  * })
  * ```
  */
-const FileBasedRouterVite = createVitePlugin(
-  unpluginRouterGeneratorFactory,
-)
+const FileBasedRouterVite = createVitePlugin(unpluginRouterGeneratorFactory);
 
-export {
-  FileBasedRouterVite,
-  type PluginConfig,
-}
-export default FileBasedRouterVite
+export { FileBasedRouterVite, type PluginConfig };
+export default FileBasedRouterVite;
