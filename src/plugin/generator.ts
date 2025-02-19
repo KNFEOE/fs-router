@@ -1,28 +1,25 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import { RouteExtractor } from '../router/extractor';
-import { RouteCodeGenerator } from '../router/generator';
 import type { PluginConfig } from './config';
+import { RouteExtractor, RouteCodeGenerator } from '../router';
 
 export async function generator(config: PluginConfig) {
+  // Extract routes
   const extractor = new RouteExtractor({
     routesDir: config.routesDirectory,
     alias: config.alias
   });
-
   const routes = await extractor.extract();
 
+  // Generate code
   const generator = new RouteCodeGenerator({
     splitting: config.splitting,
-    defaultErrorBoundary: config.defaultErrorBoundary
   });
-
   const code = generator.generate(routes);
 
   if (config.enableGeneration) {
     // Ensure directory exists
     await fs.mkdir(path.dirname(config.generatedRoutesPath), { recursive: true });
-
     // Write generated code
     await fs.writeFile(config.generatedRoutesPath, code, 'utf-8');
   }

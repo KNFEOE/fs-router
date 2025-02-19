@@ -47,7 +47,7 @@
   "dependencies": {
     "@react-router/dev": "^7.1.5",
     "chokidar": "^4.0.3",
-    "react-router-dom": "^7.1.5",
+    "react-router": "^7.1.5",
     "typescript": "^5.0.0",
     "unplugin": "^2.1.2"
   },

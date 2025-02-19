@@ -187,6 +187,15 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
         })
       } else {
         setupWatcher();
+
+        let generated = false;
+
+        compiler.hooks.watchRun.tapPromise(PLUGIN_NAME, async () => {
+          if (!generated) {
+            generated = true;
+            return run(generate);
+          }
+        });
       }
     },
 

@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import type { RouteNode } from "./type";
-import type { ActionFunction, LoaderFunction, RouteObject } from "react-router-dom";
+import type { ActionFunction, LoaderFunction, RouteObject } from "react-router";
 
 interface RouteCodeGeneratorOptions {
   splitting?: boolean;

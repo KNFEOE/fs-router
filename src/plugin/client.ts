@@ -1,4 +1,4 @@
-import type { Router } from 'react-router-dom';
+import type { Router } from 'react-router';
 
 let router: typeof Router;
 
