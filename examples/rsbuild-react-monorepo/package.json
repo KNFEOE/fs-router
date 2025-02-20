@@ -1,0 +1,37 @@
+{
+  "name": "fox-ui",
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "analyze": "pnpm --filter @app/* run analyze",
+		"dev": "pnpm --parallel --filter @app/* run dev",
+    "build": "pnpm build:packages && pnpm build:runtime && pnpm build:apps",
+    "build:apps": "pnpm --filter @app/* build",
+    "build:shared": "pnpm --filter @fox-ui/shared build",
+		"build:runtime": "pnpm --filter @fox-ui/runtime build",
+		"build:packages": "pnpm build:shared && pnpm build:runtime",
+		"start": "pnpm --parallel --filter @app/* run start",
+		"serve": "pnpm --parallel --filter @app/* run serve",
+		"deploy": "pnpm --parallel --filter @app/* run deploy",
+		"test": "pnpm --parallel --filter @app/* run test",
+		"lint": "pnpm --parallel --filter @app/* run lint",
+		"clean": "pnpm --filter @app/* run reset",
+		"reset": "pnpm --filter @app/* run reset",
+		"upgrade": "pnpm --filter @app/* run upgrade"
+  },
+  "keywords": [],
+  "author": "",
+  "packageManager": "pnpm@9.12.2",
+  "engines": {
+    "node": "20.x",
+    "pnpm": "9.12.2"
+  }
+}
+
