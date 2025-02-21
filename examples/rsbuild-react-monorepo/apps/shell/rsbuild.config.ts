@@ -1,7 +1,6 @@
 import { defineConfig, rspack } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
-// import { pluginModuleFederation } from '@module-federation/rsbuild-plugin';
-import { FileBasedRouterRspack } from '../../packages/file-router/src/plugin/rspack';
+import { FileBasedRouterRspack } from '../../../../src/plugin/rspack';
 
 const pluginRouter = FileBasedRouterRspack({
   enableGeneration: false,
@@ -14,6 +13,12 @@ export default defineConfig({
 	source: {
 		alias: {
 			"@": "./src",
+		},
+	},
+	plugins: [pluginReact()],
+	tools: {
+		rspack: {
+			plugins: [pluginRouter],
 		},
 	},
 	/**
@@ -51,12 +56,6 @@ export default defineConfig({
 				},
 			},
 			runtimePlugins: ["./plugins/logger.plugin.ts"],
-		},
-	},
-	plugins: [pluginReact()],
-	tools: {
-		rspack: {
-			plugins: [pluginRouter],
 		},
 	},
 });

@@ -11,7 +11,6 @@
     "@fox-ui/runtime": "workspace:*",
     "@fox-ui/shared": "workspace:*",
     "@loadable/component": "^5.16.4",
-    "file-router": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^5.0.0",

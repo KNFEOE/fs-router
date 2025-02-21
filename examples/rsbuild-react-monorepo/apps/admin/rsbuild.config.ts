@@ -1,7 +1,6 @@
-import { defineConfig, rspack } from '@rsbuild/core';
+import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
-// import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
-import { FileBasedRouterRspack } from 'file-router/rspack';
+import { FileBasedRouterRspack } from '../../../../src/plugin/rspack';
 
 const pluginRouter = FileBasedRouterRspack({
   enableGeneration: false,
@@ -19,6 +18,15 @@ export default defineConfig({
 	plugins: [
 		pluginReact(),
 	],
+	tools: {
+		rspack: {
+			plugins: [pluginRouter],
+		},
+	},
+	/**
+	 * 模块联邦 v1.5
+	 * @see {@link [moduleFederation.options](https://rsbuild.dev/zh/config/module-federation/options#modulefederationoptions)}
+	 */
 	moduleFederation: {
 		options: {
 			name: "app_admin",
@@ -49,11 +57,6 @@ export default defineConfig({
 					requiredVersion: "^5.16.4",
 				},
 			},
-		},
-	},
-	tools: {
-		rspack: {
-			plugins: [pluginRouter],
 		},
 	},
 });

@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from "react";
 import { Result, Spin } from "antd";
 import {
+	Outlet,
 	type RouteObject,
 	RouterProvider,
 	createBrowserRouter,
@@ -25,17 +26,31 @@ const processRoutes = (routes: RouteObject[]) => {
 
 (routes[0].children as RouteObject[]).push({
 	path: "admin/*",
-	async lazy() {
+  async lazy() {
+    // 1. 动态加载子应用路由
 		// @ts-ignore
-		const { routes } = await import("app_admin/routes");
-		const processedRoutes = processRoutes(routes);
-		console.log("admin processed routes: ", processedRoutes);
+    const adminModule = await import("app_admin/routes");
+    // 2. 获取子应用路由配置
+    const rawRoutes = processRoutes(adminModule.routes) as RouteObject[];
+    // 3. 创建子应用路由容器组件
+    const AdminLayout = () => (
+      <Suspense fallback={<Spin size="large" />}>
+        <Outlet /> {/* 关键：提供子路由渲染出口 */}
+      </Suspense>
+    );
 
-		return {
-			element: <Suspense fallback="Loading Admin..." />,
-			children: processedRoutes,
-		};
-	},
+    // 4. 构造完整子路由配置
+    return {
+      element: <AdminLayout />,
+      children: [
+				...rawRoutes,
+				{
+					path: "*",
+					element: <Result status="404" title="404" subTitle="Admin 的页面不存在" />,
+				}
+			]
+    };
+  }
 });
 
 const router = createBrowserRouter([
@@ -59,6 +74,21 @@ export default function App() {
 			unsubscribe();
 		};
 	}, []);
+
+	useEffect(() => {
+
+  const printRoutes = (routes: RouteObject[], prefix = '') => {
+    routes.forEach(route => {
+      console.log(`[Route] ${prefix}${route.path || '/'}`);
+
+      if (route.children) {
+        printRoutes(route.children, `${prefix}${route.path}/`);
+      }
+    });
+  };
+
+  printRoutes(router.routes);
+}, [router]);
 
 	return (
 		<Suspense
