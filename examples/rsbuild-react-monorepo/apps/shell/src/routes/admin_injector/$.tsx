@@ -1,7 +1,7 @@
-// import { MicroApp } from "@/components/MicroApp";
-import { MicroAppGateway } from "@/components/MicroAppGateway";
-import React from "react";
+import React, { useEffect } from "react";
 import { loader } from "./$.data";
+import { RouteInjector } from "@/components/RouteInjector";
+import { useLoaderData } from "react-router";
 
 const AdminContext = React.createContext({
 	prefix: "admin",
@@ -9,13 +9,21 @@ const AdminContext = React.createContext({
 });
 
 export default function AdminPage() {
+	const routes = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+
+	useEffect(() => {
+		console.log("after rendered routes", routes);
+	}, [routes]);
+
 	return (
 		<AdminContext.Provider value={{ prefix: "admin", isShellRuntime: true }}>
 			<div className="flex flex-col gap-4">
 				<h1 className="text-2xl font-bold">This is admin page</h1>
 				<div className="flex flex-col gap-2">
-					<MicroAppGateway prefix="admin" routesLoader={loader}>
-					</MicroAppGateway>
+					<RouteInjector
+						namespace="admin_injector"
+						routes={routes}
+					/>
 				</div>
 			</div>
 		</AdminContext.Provider>

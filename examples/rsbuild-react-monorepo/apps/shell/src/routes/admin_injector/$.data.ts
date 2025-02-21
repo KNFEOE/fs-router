@@ -1,0 +1,13 @@
+import { processRoutes } from "@/utils/router.util";
+import type { RouteObject } from "react-router";
+
+export const loader = async () => {
+	console.log("admin$.data loader called");
+	// @ts-ignore
+	return import("app_admin/routes")
+		.then((module) => processRoutes(module.routes as RouteObject[], "admin"))
+		.catch((error) => {
+			console.error("Failed to load remote routes:", error);
+			throw error;
+		});
+};

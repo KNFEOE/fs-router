@@ -2,11 +2,16 @@ import { Header } from "@/components/Header";
 import { Outlet, useLoaderData } from "react-router";
 import "./global.css";
 import type { loader as layoutLoader } from "./layout.data";
+import { useEffect } from "react";
 
 export default function Layout() {
 	const { data } = useLoaderData() as Awaited<
 		ReturnType<typeof layoutLoader>
 	>;
+
+	useEffect(() => {
+		console.log("after rendered data on root layout	", data);
+	}, [data]);
 
 	return (
 		<div className="flex flex-col size-full min-w-screen min-h-screen">
