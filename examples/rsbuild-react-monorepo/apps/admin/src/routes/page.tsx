@@ -5,6 +5,7 @@ const Page = () => {
 	const { data } = useLoaderData() as Awaited<
 		ReturnType<typeof rootLayoutLoader>
 	>;
+	console.log("page data from root page", data);
 
 	return (
 		<div className="w-svw h-svh flex flex-col items-center justify-center bg-red-500">

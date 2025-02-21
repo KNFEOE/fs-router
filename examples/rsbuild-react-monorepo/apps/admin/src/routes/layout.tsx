@@ -1,12 +1,15 @@
 import { Header } from "@/components/Header";
 import { Outlet, useLoaderData } from "react-router";
 import "./global.css";
-import type { loader as layoutLoader } from "./layout.data";
+import type { loader as layoutLoader } from "./layout1.data";
 
 export default function Layout() {
-	const { data } = useLoaderData() as Awaited<
+	/* const { data } = useLoaderData() as Awaited<
 		ReturnType<typeof layoutLoader>
-	>;
+	>; */
+	const data = {
+		name: "@app/admin from layout.data",
+	};
 
 	return (
 		<div className="flex flex-col size-full min-w-screen min-h-screen">
