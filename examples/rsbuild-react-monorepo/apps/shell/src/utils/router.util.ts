@@ -1,24 +1,24 @@
 import { LoaderFunction, LoaderFunctionArgs, RouteObject } from "react-router";
 
 // 路由路径处理器
-export const processRoutes = (routes: RouteObject[], prefix: string) => {
+export const processRoutes = (routes: RouteObject[], namespace: string) => {
 	return routes.map((route) => ({
 		...route,
 		path: route.path === "/" ? '' : route.path,
 		loader: route.loader
-			? wrapLoader(route.loader as LoaderFunction<unknown>, prefix)
+			? wrapLoader(route.loader as LoaderFunction<unknown>, namespace)
 			: undefined, // 封装 loader 以隔离上下文
 	})) as RouteObject[];
 };
 
 // 隔离子应用 loader 上下文
-export const wrapLoader = (loader: LoaderFunction<unknown>, prefix: string) => {
+export const wrapLoader = (loader: LoaderFunction<unknown>, namespace: string) => {
 	return (args: LoaderFunctionArgs) => {
 		// 注入子应用专属上下文
 		const context = {
 			isRunInShell: true,
 			isMicroApp: true,
-			prefix,
+			namespace,
 		};
 
 		return loader?.({ ...args, context }) || null;

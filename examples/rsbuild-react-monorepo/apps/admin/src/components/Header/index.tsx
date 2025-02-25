@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "@/components/SmartLink";
 
 export function Header() {
   const navLinkClassName = ({ isActive }: { isActive: boolean }) =>

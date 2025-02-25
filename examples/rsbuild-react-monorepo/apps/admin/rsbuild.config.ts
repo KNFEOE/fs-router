@@ -3,7 +3,7 @@ import { pluginReact } from '@rsbuild/plugin-react';
 import { FileBasedRouterRspack } from '../../../../src/plugin/rspack';
 
 const pluginRouter = FileBasedRouterRspack({
-  enableGeneration: false,
+	enableGeneration: false,
 })
 
 export default defineConfig({

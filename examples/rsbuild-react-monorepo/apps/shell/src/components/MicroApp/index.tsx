@@ -2,14 +2,13 @@ import { useEffect } from 'react';
 import { useRouteInjector } from '@/contexts/router.context';
 import type { RouteObject } from 'react-router';
 
-interface RouteInjectorProps {
-	routes: RouteObject[];
-	namespace: string;
-	prefix?: string;
+interface IRouteInjectorProps {
+  routes: RouteObject[];
+  namespace: string;
 }
 
-export function RouteInjector({ routes, namespace, prefix }: RouteInjectorProps) {
-  const { inject, remove } = useRouteInjector(namespace, prefix);
+export function MicroApp({ routes, namespace }: IRouteInjectorProps) {
+  const { inject, remove } = useRouteInjector(namespace);
 
   useEffect(() => {
     // 注入路由

@@ -1,9 +1,10 @@
 
 import loadable from '@loadable/component';
 import RootLayout from '@/routes/layout';
-import { loader as loader_0 } from '@/routes/page.data';
-import { loader as loader_1 } from '@/routes/users/page.data';
-import { loader as loader_2 } from '@/routes/users/[userId]/page.data';
+import { loader as loader_0 } from '@/routes/layout.data';
+import { loader as loader_1 } from '@/routes/page.data';
+import { loader as loader_2 } from '@/routes/users/page.data';
+import { loader as loader_3 } from '@/routes/users/[userId]/page.data';
 import Loading_0 from '@/routes/users/loading';
 import Loading_1 from '@/routes/users/[userId]/loading';
 import Error_0 from '@/routes/error';
@@ -22,10 +23,11 @@ export const routes = [
   {
       path: '/',
       errorElement: <Error_0 />,
+      loader: loader_0,
       element: <RootLayout />,
       children: [{
       index: true,
-      loader: loader_0,
+      loader: loader_1,
       element: <Component_0 />
     },{
       path: '*',
@@ -43,7 +45,7 @@ export const routes = [
       element: <Component_4 />,
       children: [{
       index: true,
-      loader: loader_1,
+      loader: loader_2,
       element: <Component_5 />
     },{
       path: ':userId',
@@ -51,7 +53,7 @@ export const routes = [
       element: <Component_6 />,
       children: [{
       index: true,
-      loader: loader_2,
+      loader: loader_3,
       element: <Component_7 />
     }]
     }]

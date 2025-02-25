@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { loader } from "./$.data";
-import { RouteInjector } from "@/components/RouteInjector";
+import { MicroApp } from "@/components/MicroApp";
 import { useLoaderData } from "react-router";
 
 const AdminContext = React.createContext({
@@ -20,7 +20,7 @@ export default function AdminPage() {
 			<div className="flex flex-col gap-4">
 				<h1 className="text-2xl font-bold">This is admin page</h1>
 				<div className="flex flex-col gap-2">
-					<RouteInjector
+					<MicroApp
 						namespace="admin_injector"
 						routes={routes}
 					/>
