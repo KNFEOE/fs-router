@@ -1,6 +1,6 @@
 {
-  "name": "file-router",
-  "version": "0.0.3",
+  "name": "@feoe/fs-router",
+  "version": "0.0.1",
   "type": "module",
   "exports": {
     ".": {
