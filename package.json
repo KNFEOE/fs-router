@@ -9,17 +9,17 @@
       "require": "./dist/index.cjs"
     },
     "./rspack": {
-      "types": "./dist/plugin/index/rspack.d.ts",
+      "types": "./dist/plugin/rspack.d.ts",
       "import": "./dist/rspack.js",
       "require": "./dist/rspack.cjs"
     },
     "./webpack": {
-      "types": "./dist/plugin/index/webpack.d.ts",
+      "types": "./dist/plugin/webpack.d.ts",
       "import": "./dist/webpack.js",
       "require": "./dist/webpack.cjs"
     },
     "./vite": {
-      "types": "./dist/plugin/index/vite.d.ts",
+      "types": "./dist/plugin/vite.d.ts",
       "import": "./dist/vite.js",
       "require": "./dist/vite.cjs"
     }
