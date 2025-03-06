@@ -101,18 +101,20 @@ export class RouteCodeGenerator {
       const importPath = route._component;
       const componentName = `Component_${this.componentDeclarations.size}`;
 
-      let loadingComponent = '';
+      let loadingOptions = '';
 
       if (route.loading) {
         const loadingName = `Loading_${this.loadingImports.size}`;
 
         this.loadingImports.add(`import ${loadingName} from '${route.loading}';`);
-        loadingComponent = `, { fallback: <${loadingName} /> }`;
+        loadingOptions = `, { fallback: <${loadingName} /> }`;
+      } else {
+        loadingOptions = ', { suspense: true } as {}';
       }
 
       // Define component using loadable for code splitting
       this.componentDeclarations.add(
-        `const ${componentName} = loadable(() => import(/* webpackChunkName: "${chunkName}" */ '${importPath}')${loadingComponent});`
+        `const ${componentName} = loadable(() => import(/* webpackChunkName: "${chunkName}" */ '${importPath}')${loadingOptions});`
       );
 
       return `<${componentName} />`;
