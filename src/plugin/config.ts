@@ -30,9 +30,9 @@ export const defaultConfig: PluginConfig = {
 	enableGeneration: true,
 	defaultErrorBoundary: false,
 	typeGenerateOptions: {
-		enable: true,
+		enable: false,
 		relatedRoutesDirectories: {},
-		routesTypeFile: "routes-type.ts",
+		routesTypeFile: "src/routes-type.ts",
 	},
 };
 

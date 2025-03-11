@@ -48,7 +48,8 @@ export async function generateRouteType(options: GenerateRouteTypeOptions) {
 			return `        "${routeType.route}": {};`;
 		}),
 		"			}",
-		"		}",
+		"		};",
+		"export {};",
 	].join("\n");
 
 	fs.writeFileSync(routesTypeFile, routeTypesContent);
