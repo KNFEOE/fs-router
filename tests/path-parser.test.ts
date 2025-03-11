@@ -9,6 +9,17 @@ import { type PathParserResult, pathParser } from "../src/core/path-parser";
 
 const PathExamples = [
 	{
+		path: "app/__auth/[slug]/page",
+		expect: {
+			route: "app/:slug",
+			params: [
+				{
+					name: "slug",
+				},
+			],
+		},
+	},
+	{
 		path: "app/blog/[slug]/page",
 		expect: {
 			route: "app/blog/:slug",
@@ -38,7 +49,7 @@ const PathExamples = [
 			params: [
 				{
 					name: "*",
-					optional: false
+					optional: false,
 				},
 			],
 		},
