@@ -19,7 +19,7 @@ describe("RouteCodeGenerator", () => {
     const generator = new RouteCodeGenerator();
     const code = generator.generate(routes);
 
-    console.log(code);
+    // console.log(code);
 
     expect(code).toContain(`import loadable from '@loadable/component';`);
     expect(code).toContain("export const routes = [");
@@ -43,7 +43,7 @@ describe("RouteCodeGenerator", () => {
     const generator = new RouteCodeGenerator({ splitting: false });
     const code = generator.generate(routes);
 
-    console.log(code);
+    // console.log(code);
 
     expect(code).toContain(`import Component_0 from '@/__auth/layout'`)
     expect(code).toContain(
@@ -64,7 +64,7 @@ describe("RouteCodeGenerator", () => {
     const generator = new RouteCodeGenerator();
     const code = generator.generate(routesWithLoader);
 
-    console.log(code);
+    // console.log(code);
 
     expect(code).toContain(`import loader_0 from './loaders/homeLoader';`);
     expect(code).toContain("loader: loader_0");
@@ -92,12 +92,12 @@ describe("RouteCodeGenerator", () => {
     const generator = new RouteCodeGenerator();
     const code = generator.generate(nestedRoutes);
 
-    console.log(code);
+    // console.log(code);
 
     expect(code).toContain("children: [");
     expect(code).toContain(
-      `errorElement: <Error_0 />`,
+      "errorElement: <Error_0 />",
     );
-    expect(code).toContain(`fallback: <Loading_1 />`);
+    expect(code).toContain("fallback: <Loading_1 />");
   });
 });

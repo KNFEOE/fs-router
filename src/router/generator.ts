@@ -50,7 +50,9 @@ export class RouteCodeGenerator {
   private stringifyRoute(route: RouteNode): string {
     const element = this.generateElementCode(route);
     const errorElement = this.generateErrorElement(route);
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const loader = this.generateLoaderCode(route) as unknown as LoaderFunction<any> | undefined;
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const action = this.generateActionCode(route) as unknown as ActionFunction<any> | undefined;
 
     const routeObj: RouteObject = {

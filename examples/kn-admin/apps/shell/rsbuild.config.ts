@@ -2,6 +2,7 @@ import { defineConfig, rspack } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
 import { FileBasedRouterRspack } from "../../../../src/plugin/rspack";
+import path from "node:path";
 
 const rootPackage = require("../../package.json");
 const sharedDependencies = Object.keys(rootPackage.pnpm.overrides).reduce(
@@ -16,7 +17,13 @@ const sharedDependencies = Object.keys(rootPackage.pnpm.overrides).reduce(
 );
 
 const pluginRouter = FileBasedRouterRspack({
-	enableGeneration: false,
+	typeGenerateOptions: {
+		enable: true,
+		relatedRoutesDirectories: {
+			user: path.join(__dirname, "../user/src/routes"),
+			dashboard: path.join(__dirname, "../dashboard/src/routes"),
+		},
+	},
 });
 
 export default defineConfig({

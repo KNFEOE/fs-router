@@ -1,6 +1,6 @@
 import type { UnpluginFactory } from "unplugin";
 import { isAbsolute, normalize, resolve, join } from "node:path";
-import type { FSWatcher } from "chokidar";
+import type { ChokidarOptions, FSWatcher } from "chokidar";
 import { generator } from "./generator";
 import { defaultConfig, getConfig, type PluginConfig } from "./config";
 
@@ -29,7 +29,7 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 > = (userOptions = {}) => {
 	const ctx: RouterGeneratorPluginContext = {
 		root: process.cwd(),
-		config: defaultConfig as PluginConfig,
+		config: getConfig(userOptions, process.cwd()),
 		watcher: null,
 		lock: false,
 		generated: false,
@@ -44,7 +44,6 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 	const generate = async () => {
 		if (ctx.lock) return;
 		ctx.lock = true;
-
 		try {
 			const content = await generator(ctx.config);
 			ctx.generated = true;
@@ -88,7 +87,7 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 		const { watch } = await import("chokidar");
 		const routesDirectoryPath = getRoutesDirectoryPath();
 
-		const watchOptions = {
+		const watchOptions: ChokidarOptions = {
 			ignored: [
 				/(^|[\/\\])\../,
 				"node_modules",
@@ -100,7 +99,7 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 				"**/*.scss",
 			],
 			ignoreInitial: true,
-			ignorePermissionErrors: true,
+			ignorePermissionErrors: true
 		};
 
 		ctx.watcher = watch(routesDirectoryPath, watchOptions);
@@ -220,7 +219,6 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 				setupWatcher();
 
 				let generated = false;
-
 				compiler.hooks.watchRun.tapPromise(PLUGIN_NAME, async () => {
 					if (!generated) {
 						generated = true;

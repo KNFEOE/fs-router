@@ -1,0 +1,1 @@
+export type RoutePaths = "/" | "/users" | "/users/:userId" | "/admin" | "/admin/users" | "/admin/about" | "/admin/users/:userId" | "/admin/:type/detail/:id";

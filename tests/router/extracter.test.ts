@@ -15,7 +15,7 @@ describe('RouteExtractor', () => {
     });
     const routes = await extractor.extract();
 
-    console.log(JSON.stringify(routes, null, 2));
+    // console.log(JSON.stringify(routes, null, 2));
 
     expect(routes).toEqual(
       [
