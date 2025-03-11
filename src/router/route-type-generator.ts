@@ -42,7 +42,7 @@ export async function generateRouteType(options: GenerateRouteTypeOptions) {
 		.map((route) => `"${route.route}"`)
 		.join(" | ")};`;
 
-	let routeTypeFilePath = path.join(__dirname, "./types/route-type.ts");
+	let routeTypeFilePath = path.join(__dirname, "./types/route-type.d.ts");
 	if (!fs.existsSync(routeTypeFilePath)) {
 		routeTypeFilePath = path.join(__dirname, "../types/route-type.ts");
 	}
