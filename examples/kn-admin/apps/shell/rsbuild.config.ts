@@ -17,13 +17,13 @@ const sharedDependencies = Object.keys(rootPackage.pnpm.overrides).reduce(
 );
 
 const pluginRouter = FileBasedRouterRspack({
-	typeGenerateOptions: {
-		enable: true,
-		relatedRoutesDirectories: {
-			user: path.join(__dirname, "../user/src/routes"),
-			dashboard: path.join(__dirname, "../dashboard/src/routes"),
-		},
-	},
+	// typeGenerateOptions: {
+	// 	enable: true,
+	// 	relatedRoutesDirectories: {
+	// 		user: path.join(__dirname, "../user/src/routes"),
+	// 		dashboard: path.join(__dirname, "../dashboard/src/routes"),
+	// 	},
+	// },
 });
 
 export default defineConfig({

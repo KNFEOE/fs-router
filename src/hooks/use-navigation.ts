@@ -16,23 +16,28 @@ import type { RouteTypes } from "../types/route-type";
 
 export interface NavigationOptions extends NavigateOptions {}
 
-export type PathParameters<Path extends string> = Required<
-	PathParam<Path>
+type OptionalParams<T extends string> = T extends `${infer Part}/${infer Rest}`
+	? (Part extends `:${infer Name}?` ? Name : never) | OptionalParams<Rest>
+	: T extends `:${infer Name}?`
+		? Name
+		: never;
+
+type RouteParams<Path extends string> = {
+	[P in OptionalParams<Path>]?: string | number | boolean;
+} & {
+	[P in Exclude<PathParam<Path>, OptionalParams<Path>>]:
+		| string
+		| number
+		| boolean;
+};
+
+type PathParameters<Path extends string> = Exclude<
+	PathParam<Path>,
+	OptionalParams<Path>
 >["length"] extends 0
-	? [
-			path: Path,
-			params?: {
-				[key in PathParam<Path>]: string | number | boolean;
-			},
-			query?: Record<string, string>,
-		]
-	: [
-			path: Path,
-			params: {
-				[key in PathParam<Path>]: string | number | boolean;
-			},
-			query?: Record<string, string>,
-		];
+	? [path: Path, params?: RouteParams<Path>, query?: Record<string, string>]
+	: [path: Path, params: RouteParams<Path>, query?: Record<string, string>];
+
 export function useNavigation() {
 	const navigate = useNavigate();
 
