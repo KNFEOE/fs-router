@@ -28,9 +28,12 @@ export async function generator(config: PluginConfig) {
 	}
 
 	if (config.typeGenerateOptions?.enable) {
+		const { routesTypeFile, relatedRoutesDirectories } =
+			config.typeGenerateOptions;
 		await generateRouteType({
+			routesTypeFile,
+			relatedRoutesDirectories,
 			routesDirectory: config.routesDirectory,
-			relatedRoutesDirectories: config.typeGenerateOptions.relatedRoutesDirectories,
 		});
 	}
 

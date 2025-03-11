@@ -1,4 +1,4 @@
-export type { RoutePaths } from "./types/route-type";
+export type { RouteTypes } from "./types/route-type";
 
 export {
 	pathParser,

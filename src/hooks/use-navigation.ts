@@ -12,7 +12,7 @@ import {
 	Path,
 	replace,
 } from "react-router";
-import type { RoutePaths } from "../types/route-type";
+import type { RouteTypes } from "../types/route-type";
 
 export interface NavigationOptions extends NavigateOptions {}
 
@@ -37,7 +37,7 @@ export function useNavigation() {
 	const navigate = useNavigate();
 
 	const navigation = useMemo(() => {
-		const buildHref = <Path extends RoutePaths>(
+		const buildHref = <Path extends keyof RouteTypes>(
 			...args: PathParameters<Path>
 		) => {
 			const [path, params, query] = args;
@@ -69,10 +69,10 @@ export function useNavigation() {
 				return location.reload();
 			},
 			buildHref,
-			push<Path extends RoutePaths>(...args: PathParameters<Path>) {
+			push<Path extends keyof RouteTypes>(...args: PathParameters<Path>) {
 				return navigate(buildHref<Path>(...args));
 			},
-			replace<Path extends RoutePaths>(...args: PathParameters<Path>) {
+			replace<Path extends keyof RouteTypes>(...args: PathParameters<Path>) {
 				return navigate(buildHref<Path>(...args), {
 					replace: true,
 				});

@@ -1,1 +1,2 @@
-export type RoutePaths = "/";
+// biome-ignore lint/suspicious/noEmptyInterface: <explanation>
+export interface RouteTypes {}

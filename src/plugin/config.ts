@@ -32,6 +32,7 @@ export const defaultConfig: PluginConfig = {
 	typeGenerateOptions: {
 		enable: true,
 		relatedRoutesDirectories: {},
+		routesTypeFile: "routes-type.ts",
 	},
 };
 
@@ -49,6 +50,13 @@ export const getConfig = (
 	config.generatedRoutesPath = isAbsolute(config.generatedRoutesPath)
 		? config.generatedRoutesPath
 		: resolve(root, join(root, config.generatedRoutesPath));
+
+	if (config.typeGenerateOptions) {
+		const { routesTypeFile } = config.typeGenerateOptions;
+		config.typeGenerateOptions.routesTypeFile = isAbsolute(routesTypeFile)
+			? routesTypeFile
+			: join(root, routesTypeFile);
+	}
 
 	return config;
 };
