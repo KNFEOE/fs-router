@@ -12,10 +12,11 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "jsx": "preserve"
   },
   "include": [
     "src",
-    "src/router-type.ts"
+    "typings"
   ]
 }

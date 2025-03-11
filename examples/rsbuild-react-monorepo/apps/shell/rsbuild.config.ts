@@ -1,9 +1,16 @@
 import { defineConfig, rspack } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { FileBasedRouterRspack } from '../../../../src/plugin/rspack';
+import path from 'node:path';
 
 const pluginRouter = FileBasedRouterRspack({
-  enableGeneration: false,
+  enableGeneration: true,
+	typeGenerateOptions: {
+		enable: true,
+		relatedRoutesDirectories: {
+			admin: path.join(__dirname, "../admin/src/routes"),
+		},
+	}
 })
 
 export default defineConfig({

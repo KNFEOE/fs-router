@@ -10,14 +10,14 @@ import Loading_1 from '@/routes/users/[userId]/loading';
 import Error_0 from '@/routes/error';
 import Error_1 from '@/routes/users/error';
 import Error_2 from '@/routes/users/[userId]/error';
-const Component_0 = loadable(() => import(/* webpackChunkName: "page" */ '@/routes/page'));
-const Component_1 = loadable(() => import(/* webpackChunkName: "$" */ '@/routes/$'));
-const Component_2 = loadable(() => import(/* webpackChunkName: "about/layout" */ '@/routes/about/layout'));
-const Component_3 = loadable(() => import(/* webpackChunkName: "about/page" */ '@/routes/about/page'));
+const Component_0 = loadable(() => import(/* webpackChunkName: "page" */ '@/routes/page'), { suspense: true } as {});
+const Component_1 = loadable(() => import(/* webpackChunkName: "$" */ '@/routes/$'), { suspense: true } as {});
+const Component_2 = loadable(() => import(/* webpackChunkName: "about/layout" */ '@/routes/about/layout'), { suspense: true } as {});
+const Component_3 = loadable(() => import(/* webpackChunkName: "about/page" */ '@/routes/about/page'), { suspense: true } as {});
 const Component_4 = loadable(() => import(/* webpackChunkName: "users/layout" */ '@/routes/users/layout'), { fallback: <Loading_0 /> });
-const Component_5 = loadable(() => import(/* webpackChunkName: "users/page" */ '@/routes/users/page'));
+const Component_5 = loadable(() => import(/* webpackChunkName: "users/page" */ '@/routes/users/page'), { suspense: true } as {});
 const Component_6 = loadable(() => import(/* webpackChunkName: "users/(userId)/layout" */ '@/routes/users/[userId]/layout'), { fallback: <Loading_1 /> });
-const Component_7 = loadable(() => import(/* webpackChunkName: "users/(userId)/page" */ '@/routes/users/[userId]/page'));
+const Component_7 = loadable(() => import(/* webpackChunkName: "users/(userId)/page" */ '@/routes/users/[userId]/page'), { suspense: true } as {});
 
 export const routes = [
   {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      body {
+        background: #f8f9fa;
+      }
+      .loader {
+        display: none;
+        margin: calc(50vh - 2px) auto;
+        height: 4px;
+        width: 25vw;
+        --c: no-repeat linear-gradient(#1b2128 0 0);
+        background: var(--c), var(--c), #d4d6d8;
+        background-size: 60% 100%;
+        animation: l16 3s infinite;
+      }
+      @keyframes l16 {
+        0% {
+          background-position: -150% 0, -150% 0;
+        }
+        66% {
+          background-position: 250% 0, -150% 0;
+        }
+        100% {
+          background-position: 250% 0, 250% 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="loader" id="loader"></div>
+  </body>
+</html>
