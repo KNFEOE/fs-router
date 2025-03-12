@@ -50,9 +50,7 @@ export class RouteCodeGenerator {
   private stringifyRoute(route: RouteNode): string {
     const element = this.generateElementCode(route);
     const errorElement = this.generateErrorElement(route);
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const loader = this.generateLoaderCode(route) as unknown as LoaderFunction<any> | undefined;
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const action = this.generateActionCode(route) as unknown as ActionFunction<any> | undefined;
 
     const routeObj: RouteObject = {
@@ -103,20 +101,18 @@ export class RouteCodeGenerator {
       const importPath = route._component;
       const componentName = `Component_${this.componentDeclarations.size}`;
 
-      let loadingOptions = '';
+      let loadingComponent = '';
 
       if (route.loading) {
         const loadingName = `Loading_${this.loadingImports.size}`;
 
         this.loadingImports.add(`import ${loadingName} from '${route.loading}';`);
-        loadingOptions = `, { fallback: <${loadingName} /> }`;
-      } else {
-        loadingOptions = ', { suspense: true } as {}';
+        loadingComponent = `, { fallback: <${loadingName} /> }`;
       }
 
       // Define component using loadable for code splitting
       this.componentDeclarations.add(
-        `const ${componentName} = loadable(() => import(/* webpackChunkName: "${chunkName}" */ '${importPath}')${loadingOptions});`
+        `const ${componentName} = loadable(() => import(/* webpackChunkName: "${chunkName}" */ '${importPath}')${loadingComponent});`
       );
 
       return `<${componentName} />`;
