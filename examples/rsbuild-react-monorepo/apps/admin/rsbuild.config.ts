@@ -4,7 +4,7 @@ import { FileBasedRouterRspack } from "../../../../src/plugin/rspack";
 import path from "node:path";
 
 const pluginRouter = FileBasedRouterRspack({
-	enableGeneration: false,
+	enableGeneration: true,
 	typeGenerateOptions: {
 		routesTypeFile: "src/routes-type.ts",
 		routesDirectories: [

@@ -8,6 +8,7 @@ node_modules
 dist/
 **/src/routes.tsx
 **/@mf-types
+# **/routes-type.ts
 
 # IDE
 .vscode/*

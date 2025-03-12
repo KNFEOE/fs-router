@@ -8,13 +8,13 @@ const pluginRouter = FileBasedRouterRspack({
 	typeGenerateOptions: {
 		routesTypeFile: "src/routes-type.ts",
 		routesDirectories: [
-			{
-				path: path.join(__dirname, "src/routes"),
-			},
-			{
-				prefix: "admin",
-				path: path.join(__dirname, "../admin/src/routes"),
-			},
+			// {
+			// 	path: path.join(__dirname, "src/routes"),
+			// },
+			// {
+			// 	prefix: "admin",
+			// 	path: path.join(__dirname, "../admin/src/routes"),
+			// },
 		],
 	},
 });

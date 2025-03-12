@@ -1,5 +1,5 @@
 import type { UnpluginFactory } from "unplugin";
-import { isAbsolute, normalize, resolve, join } from "node:path";
+import path, { isAbsolute, normalize, resolve, join } from "node:path";
 import type { ChokidarOptions, FSWatcher } from "chokidar";
 import { generator } from "./generator";
 import { defaultConfig, getConfig, type PluginConfig } from "./config";
@@ -78,8 +78,9 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 		}
 
 		const routesDirectoryPath = getRoutesDirectoryPath();
-
-		if (filePath.startsWith(routesDirectoryPath)) {
+		const relative = path.relative(routesDirectoryPath, filePath);
+		const fileInRoutesDirectory = relative !== "" && !relative.startsWith("..");
+		if (fileInRoutesDirectory) {
 			await run(generate);
 		}
 	};
@@ -100,7 +101,7 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 				"**/*.scss",
 			],
 			ignoreInitial: true,
-			ignorePermissionErrors: true
+			ignorePermissionErrors: true,
 		};
 
 		ctx.watcher = watch(routesDirectoryPath, watchOptions);
