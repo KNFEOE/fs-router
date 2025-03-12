@@ -1,10 +1,23 @@
-import { defineConfig } from '@rsbuild/core';
-import { pluginReact } from '@rsbuild/plugin-react';
-import { FileBasedRouterRspack } from '../../../../src/plugin/rspack';
+import { defineConfig } from "@rsbuild/core";
+import { pluginReact } from "@rsbuild/plugin-react";
+import { FileBasedRouterRspack } from "../../../../src/plugin/rspack";
+import path from "node:path";
 
 const pluginRouter = FileBasedRouterRspack({
 	enableGeneration: false,
-})
+	typeGenerateOptions: {
+		routesTypeFile: "src/routes-type.ts",
+		routesDirectories: [
+			{
+				path: path.join(__dirname, "../shell/src/routes"),
+			},
+			{
+				prefix: "admin",
+				path: path.join(__dirname, "src/routes"),
+			},
+		],
+	},
+});
 
 export default defineConfig({
 	source: {
@@ -15,9 +28,7 @@ export default defineConfig({
 	server: {
 		port: 3001,
 	},
-	plugins: [
-		pluginReact(),
-	],
+	plugins: [pluginReact()],
 	tools: {
 		rspack: {
 			plugins: [pluginRouter],

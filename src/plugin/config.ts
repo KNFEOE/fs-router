@@ -13,9 +13,7 @@ export interface PluginConfig {
 	splitting?: boolean;
 	defaultErrorBoundary?: boolean;
 
-	typeGenerateOptions?: {
-		enable: boolean;
-	} & Omit<GenerateRouteTypeOptions, "routesDirectory">;
+	typeGenerateOptions?: GenerateRouteTypeOptions;
 }
 
 export const defaultConfig: PluginConfig = {
@@ -30,8 +28,7 @@ export const defaultConfig: PluginConfig = {
 	enableGeneration: true,
 	defaultErrorBoundary: false,
 	typeGenerateOptions: {
-		enable: false,
-		relatedRoutesDirectories: {},
+		routesDirectories: [],
 		routesTypeFile: "src/routes-type.ts",
 	},
 };

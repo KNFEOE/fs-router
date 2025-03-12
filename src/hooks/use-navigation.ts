@@ -1,16 +1,9 @@
-/**
- * @overview
- * @author AEPKILL
- * @created 2025-02-11 19:26:23
- */
 import { useMemo } from "react";
 import {
 	useNavigate,
 	type NavigateOptions,
 	generatePath,
 	type PathParam,
-	Path,
-	replace,
 } from "react-router";
 import type { RouteTypes } from "../types/route-type";
 

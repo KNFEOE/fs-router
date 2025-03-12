@@ -27,14 +27,14 @@ export async function generator(config: PluginConfig) {
 		await fs.writeFile(config.generatedRoutesPath, code, "utf-8");
 	}
 
-	if (config.typeGenerateOptions?.enable) {
-		const { routesTypeFile, relatedRoutesDirectories } =
-			config.typeGenerateOptions;
-		await generateRouteType({
-			routesTypeFile,
-			relatedRoutesDirectories,
-			routesDirectory: config.routesDirectory,
-		});
+	if (config.typeGenerateOptions) {
+		const { routesTypeFile, routesDirectories } = config.typeGenerateOptions;
+		if (routesDirectories.length > 0) {
+			await generateRouteType({
+				routesTypeFile,
+				routesDirectories,
+			});
+		}
 	}
 
 	return code;

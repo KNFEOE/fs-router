@@ -6,11 +6,16 @@ import path from "node:path";
 const pluginRouter = FileBasedRouterRspack({
 	enableGeneration: true,
 	typeGenerateOptions: {
-		enable: true,
 		routesTypeFile: "src/routes-type.ts",
-		relatedRoutesDirectories: {
-			admin: path.join(__dirname, "../admin/src/routes"),
-		},
+		routesDirectories: [
+			{
+				path: path.join(__dirname, "src/routes"),
+			},
+			{
+				prefix: "admin",
+				path: path.join(__dirname, "../admin/src/routes"),
+			},
+		],
 	},
 });
 
