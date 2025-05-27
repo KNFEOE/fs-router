@@ -31,9 +31,6 @@ importers:
 
   apps/dashboard:
     dependencies:
-      '@kn-admin/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@emotion/cache':
         specifier: 11.13.1
         version: 11.13.1
@@ -52,6 +49,9 @@ importers:
       '@iconify/react':
         specifier: 5.0.2
         version: 5.0.2(react@19.0.0)
+      '@kn-admin/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@loadable/component':
         specifier: 5.16.4
         version: 5.16.4(react@19.0.0)
@@ -131,9 +131,6 @@ importers:
 
   apps/product:
     dependencies:
-      '@kn-admin/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@emotion/cache':
         specifier: 11.13.1
         version: 11.13.1
@@ -152,6 +149,9 @@ importers:
       '@iconify/react':
         specifier: 5.0.2
         version: 5.0.2(react@19.0.0)
+      '@kn-admin/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@loadable/component':
         specifier: 5.16.4
         version: 5.16.4(react@19.0.0)
@@ -231,9 +231,6 @@ importers:
 
   apps/shell:
     dependencies:
-      '@kn-admin/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@emotion/cache':
         specifier: 11.13.1
         version: 11.13.1
@@ -252,6 +249,9 @@ importers:
       '@iconify/react':
         specifier: 5.0.2
         version: 5.0.2(react@19.0.0)
+      '@kn-admin/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@loadable/component':
         specifier: 5.16.4
         version: 5.16.4(react@19.0.0)
@@ -331,9 +331,6 @@ importers:
 
   apps/user:
     dependencies:
-      '@kn-admin/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@emotion/cache':
         specifier: 11.13.1
         version: 11.13.1
@@ -352,6 +349,9 @@ importers:
       '@iconify/react':
         specifier: 5.0.2
         version: 5.0.2(react@19.0.0)
+      '@kn-admin/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@loadable/component':
         specifier: 5.16.4
         version: 5.16.4(react@19.0.0)

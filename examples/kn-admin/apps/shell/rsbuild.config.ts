@@ -49,8 +49,10 @@ export default defineConfig({
 			name: "app_shell",
 			filename: "remoteEntry.js",
 			remotes: {
-				app_dashboard: "app_dashboard@http://localhost:3001/remoteEntry.js",
-				app_user: "app_user@http://localhost:3002/remoteEntry.js",
+				app_dashboard:
+					"app_dashboard@http://localhost:3001/remoteEntry.js?v=1.0.0",
+				app_product: "app_product@http://localhost:3002/remoteEntry.js?v=1.0.0",
+				app_user: "app_user@http://localhost:3003/remoteEntry.js?v=1.0.0",
 			},
 			shareStrategy: "loaded-first",
 			shared: {

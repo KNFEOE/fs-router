@@ -1,16 +1,11 @@
-import {
-	BrowserRouter,
-	createBrowserRouter,
-	RouterProvider,
-	useRoutes,
-} from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import { routes } from "./routes";
-import { Suspense } from "react";
 import { ThemeProvider } from "@kn-admin/shared";
+import "./app.css";
 
 const router = createBrowserRouter(routes);
-export default function App() {
 
+export default function App() {
 	return (
 		<ThemeProvider>
 			<RouterProvider router={router} />

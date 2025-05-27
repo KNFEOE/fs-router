@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react";
 import Fallback from "@/components/Fallback";
 
-const RemoteUser = lazy(() => import("app_user/App" as ""));
+const RemoteProduct = lazy(() => import("app_product/App" as ""));
 
-export default function User() {
+export default function Product() {
 	return (
 		<Suspense fallback={<Fallback />}>
-			<RemoteUser />
+			<RemoteProduct />
 		</Suspense>
 	);
 }

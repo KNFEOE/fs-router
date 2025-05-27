@@ -4,7 +4,7 @@ import { FileBasedRouterRspack } from "../../../../src/plugin/rspack";
 import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
 
 const pluginRouter = FileBasedRouterRspack({
-	enableGeneration: false,
+	enableGeneration: true,
 });
 
 const rootPackage = require("../../package.json");

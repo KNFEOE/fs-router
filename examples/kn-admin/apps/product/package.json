@@ -1,5 +1,5 @@
 {
-  "name": "@kn-admin/product",
+  "name": "@app/product",
   "private": true,
   "version": "1.0.0",
   "scripts": {

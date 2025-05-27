@@ -12,7 +12,7 @@ const icon = (name: string) => (
 export const navData = [
 	{
 		title: "Dashboard",
-		path: "/",
+		path: "/dashboard",
 		icon: icon("ic-analytics"),
 	},
 	{
@@ -22,7 +22,7 @@ export const navData = [
 	},
 	{
 		title: "Product",
-		path: "/products",
+		path: "/product",
 		icon: icon("ic-cart"),
 		info: (
 			<Label color="error" variant="inverted">

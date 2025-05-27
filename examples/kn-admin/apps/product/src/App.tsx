@@ -1,7 +1,8 @@
 import { useRoutes } from "react-router";
 import { routes } from "./routes";
-import {  useMount} from 'ahooks'
+import { useMount } from "ahooks";
 import { type ReactElement, startTransition, useState } from "react";
+
 export default function App() {
 	const element = useRoutes(routes);
 

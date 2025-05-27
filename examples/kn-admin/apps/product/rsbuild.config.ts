@@ -4,7 +4,7 @@ import { FileBasedRouterRspack } from "../../../../src/plugin/rspack";
 import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
 
 const pluginRouter = FileBasedRouterRspack({
-	enableGeneration: false,
+	enableGeneration: true,
 });
 
 const rootPackage = require("../../package.json");
@@ -26,12 +26,12 @@ export default defineConfig({
 		},
 	},
 	server: {
-		port: 3001,
+		port: 3002,
 	},
 	plugins: [
 		pluginReact(),
 		pluginModuleFederation({
-			name: "app_dashboard",
+			name: "app_product",
 			exposes: {
 				"./App": "./src/App.tsx",
 			},

@@ -1,5 +1,5 @@
 {
-  "name": "@kn-admin/user",
+  "name": "@app/user",
   "private": true,
   "version": "1.0.0",
   "scripts": {
