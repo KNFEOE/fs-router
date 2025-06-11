@@ -1,11 +1,12 @@
 import { NavLink } from "react-router";
 import { links } from "./links";
+import { memo } from "react";
 
-export default function Header() {
+export default memo(function Header() {
 	return (
-		<div className="bg-white shadow-md p-4">
-			<div className="container max-w-screen-lg mx-auto flex justify-between items-center">
+		<div className="flex justify-between items-center">
 				<div>KeepAliveTabs</div>
+
 				<nav className="flex justify-center">
 					<ul className="flex gap-4">
 						{links.map((link) => (
@@ -14,8 +15,7 @@ export default function Header() {
 							</li>
 						))}
 					</ul>
-				</nav>
-			</div>
+			</nav>
 		</div>
 	);
-}
+})
