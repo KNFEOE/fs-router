@@ -78,5 +78,15 @@ function MemoScrollTopWrapper(props: { children?: ReactNode }) {
 
 function CustomSuspense(props: { children: ReactNode }) {
 	const { children } = props;
-	return <Suspense fallback={<div className="text-center text-red-400 text-[12px] mt-[10px]">Loading...</div>}>{children}</Suspense>;
+	return (
+		<Suspense
+			fallback={
+				<div className="text-center text-red-400 text-[12px] mt-[10px]">
+					Loading...
+				</div>
+			}
+		>
+			{children}
+		</Suspense>
+	);
 }
