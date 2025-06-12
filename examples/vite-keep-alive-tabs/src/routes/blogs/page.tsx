@@ -1,20 +1,45 @@
 import { memo } from "react";
-import { blogs } from "./data";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
+import { PageContainer, ProTable } from "@ant-design/pro-components";
+import { Button } from "antd";
+import type { loader } from "./page.data";
 
 export default memo(function BlogsPage() {
+	const blogs = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+	console.log("blogs: ", blogs);
+
 	return (
-		<div className="grid grid-cols-3 gap-4">
-			{blogs.map((blog) => (
-				<div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
-					<div className="flex justify-between items-center">
-						<Link className="text-blue-500" to={`/blogs/${blog.id}`}>
-							<h2 className="text-lg font-bold">{blog.title}</h2>
-						</Link>
-					</div>
-					<p className="text-sm text-gray-600 mt-2">{blog.content}</p>
-				</div>
-			))}
-		</div>
+		<PageContainer
+			title="Blogs"
+			subTitle="Welcome to BlogsPage"
+			extra={<Button type="primary">Button</Button>}
+		>
+			<ProTable
+				dataSource={blogs}
+				rowKey="id"
+				columns={[
+					{
+						title: "Title",
+						dataIndex: "title",
+						key: "title",
+					},
+					{
+						title: "Content",
+						dataIndex: "content",
+						key: "content",
+					},
+					{
+						title: "Action",
+						dataIndex: "action",
+						key: "action",
+						render: (_, record) => (
+							<Link className="text-blue-500" to={`/blogs/${record.id}`}>
+								Edit
+							</Link>
+						),
+					},
+				]}
+			/>
+		</PageContainer>
 	);
 })

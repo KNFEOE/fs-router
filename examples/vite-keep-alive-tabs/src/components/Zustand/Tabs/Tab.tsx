@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { useActiveTab, type TabItem } from "@/store/tabsStore";
+import { useActiveTab, type TabItem } from "@/store/tabs.store";
 import { cn } from "@/utils/tailwind.util";
 import { Link } from "react-router";
 

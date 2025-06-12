@@ -1,5 +1,11 @@
-import { memo } from "react";
+import { PageContainer, ProCard, ProTable } from "@ant-design/pro-components";
+import { Button } from "antd";
 
-export default memo(function AboutPage() {
-	return <div>AboutPage</div>;
-})
+export default function IndexPage() {
+	return (
+		<PageContainer title="About" extra={<Button type="primary">Button</Button>}>
+			<ProCard title="Welcome to AboutPage" />
+			<ProTable />
+		</PageContainer>
+	);
+}

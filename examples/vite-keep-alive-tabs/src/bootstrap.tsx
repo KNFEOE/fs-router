@@ -1,14 +1,18 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router";
-import App from "./App";
+import {
+	// BrowserRouter,
+	createBrowserRouter,
+	RouterProvider,
+} from "react-router";
+// import App from "./App";
+import { routes } from "./routes";
+import "./index.css";
+
+const router = createBrowserRouter(routes);
 
 // 创建一个包装组件作为导出
 export const Bootstrap = () => {
-	return (
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
-	);
+	return <RouterProvider router={router} />;
 };
 
 // 渲染应用

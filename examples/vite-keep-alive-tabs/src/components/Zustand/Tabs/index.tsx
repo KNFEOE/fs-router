@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Tab } from "./Tab";
-import { useTabs } from "@/store/tabsStore";
+import { useTabs } from "@/store/tabs.store";
 
 export const Tabs = memo(() => {
 	const tabs = useTabs();
