@@ -13,7 +13,7 @@ export interface RouteTransitionState {
 
 export const useRouteTransition = () => {
   const location = useLocation();
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const [transitionState, setTransitionState] = useState<RouteTransitionState>({
     isTransitioning: false,
     isLoading: false,
@@ -61,7 +61,7 @@ export const useRouteTransition = () => {
 
   // 监听导航状态
   useEffect(() => {
-    const isLoading = navigation.state === 'loading';
+    const isLoading = false;
 
     setTransitionState(prev => ({
       ...prev,
@@ -95,7 +95,7 @@ export const useRouteTransition = () => {
         }));
       }, 200);
     }
-  }, [navigation.state, transitionState.isTransitioning]);
+  }, [transitionState.isTransitioning]);
 
   // 清理定时器
   useEffect(() => {
