@@ -1,11 +1,14 @@
-import { Keepalive } from "@/components/Keepalive";
-import { Tabs } from "@/components/Tabs";
-import { TabsManager } from "@/components/TabsManager";
+import { Keepalive } from "@/components/Zustand/Keepalive";
+import { Tabs } from "@/components/Zustand/Tabs";
 import Header from "./header";
+import { useTabState } from "@/hooks/tabState.hook";
+import { ProLayout } from "@ant-design/pro-components";
 
-export default function Layout() {
+export default function ZustandLayout() {
+	useTabState();
+
 	return (
-		<TabsManager>
+		<ProLayout>
 			<div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
 				<div className="container max-w-screen-lg mx-auto">
 					<Header />
@@ -18,6 +21,6 @@ export default function Layout() {
 					</div>
 				</div>
 			</div>
-		</TabsManager>
+		</ProLayout>
 	);
 }

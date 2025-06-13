@@ -6,26 +6,29 @@ import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { useMemo, useRef } from "react";
 import { Suspense } from "react";
+import { ProLayout } from "@ant-design/pro-components";
 
-export default function Layout() {
+export default function ReactPortalKeepAliveLayout() {
 	const aliveRef = useKeepAliveRef();
 
 	return (
-		<div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
-			<Header />
+		<ProLayout>
+			<div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
+				<Header />
 
-			<div className="flex-1 container max-w-screen-lg mx-auto">
-				<CustomSuspense>
-					<KeepAliveRouteOutlet
-						wrapperComponent={MemoScrollTopWrapper}
-						duration={300}
-						transition={true}
-						exclude={["/nocache-counter"]}
-						aliveRef={aliveRef}
-					/>
-				</CustomSuspense>
+				<div className="flex-1 container max-w-screen-lg mx-auto">
+					<CustomSuspense>
+						<KeepAliveRouteOutlet
+							wrapperComponent={MemoScrollTopWrapper}
+							duration={300}
+							transition={true}
+							exclude={["/nocache-counter"]}
+							aliveRef={aliveRef}
+						/>
+					</CustomSuspense>
+				</div>
 			</div>
-		</div>
+		</ProLayout>
 	);
 }
 

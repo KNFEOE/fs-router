@@ -15,8 +15,4 @@ export const links = [
 		label: "Blogs",
 		value: "/blogs",
 	},
-	{
-		label: "Performance",
-		value: "/performance",
-	},
 ];
