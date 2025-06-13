@@ -5,6 +5,7 @@ export interface TabItem {
   title: string;
   timestamp: number;
   keepalive: boolean;
+  isPending?: boolean;
   component?: React.ReactNode;
 }
 
@@ -12,10 +13,12 @@ export const TabsManagerContext = createContext<{
   tabs: TabItem[];
   activeTab: string;
   setTabs: (tabs: TabItem[]) => void;
+  isPending: boolean;
 }>({
   tabs: [],
-  activeTab: "",
-  setTabs: () => { },
+  activeTab: '',
+  setTabs: () => {},
+  isPending: false,
 });
 
 export const useTabsManager = () => {
