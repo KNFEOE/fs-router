@@ -6,6 +6,7 @@ export interface TabItem {
   title: string;
   timestamp: number;
   keepalive: boolean;
+  isPending?: boolean;
   component?: React.ReactNode;
 }
 
@@ -20,6 +21,7 @@ interface TabsActions {
   addTab: (tab: TabItem) => void;
   removeTab: (url: string) => void;
   updateTabTitle: (url: string, title: string) => void;
+  setTabPending: (url: string, isPending: boolean) => void;
 }
 
 export interface TabsStore extends TabsState {
@@ -60,6 +62,12 @@ export const useTabsStore = create<TabsStore>()(
         tabs: state.tabs.map(tab =>
           tab.url === url ? { ...tab, title } : tab
         )
+      })),
+
+      setTabPending: (url: string, isPending: boolean) => set((state) => ({
+        tabs: state.tabs.map(tab =>
+          tab.url === url ? { ...tab, isPending } : tab
+        )
       }))
     }
   }))
@@ -71,5 +79,10 @@ export const useIsExistTab = (url: string) => useTabsStore(state => state.tabs.f
 
 export const useActiveTab = () => useTabsStore(state => state.activeTab);
 export const useIsActiveTab = (url: string) => useTabsStore((state) => state.activeTab === url)
+
+export const useTabPending = (url: string) => useTabsStore(state => {
+  const tab = state.tabs.find(tab => tab.url === url);
+  return tab?.isPending ?? false;
+});
 
 export const useTabsActions = () => useTabsStore(state => state.actions);

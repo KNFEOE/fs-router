@@ -2,32 +2,32 @@ import { useKeepAliveRef } from "keepalive-for-react";
 import KeepAliveRouteOutlet from "keepalive-for-react-router";
 import { useLocation } from "react-router";
 import Header from "./header";
-import { useEffect } from "react";
+import { memo, useEffect } from 'react';
 import type { ReactNode } from "react";
 import { useMemo, useRef } from "react";
 import { Suspense } from 'react';
 
-export default function ReactPortalKeepAliveLayout() {
-	const aliveRef = useKeepAliveRef();
+export default memo(function ReactPortalKeepAliveLayout() {
+  const aliveRef = useKeepAliveRef();
 
-	return (
-  <div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
-    <Header />
+  return (
+    <div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
+      <Header />
 
-    <div className="flex-1 container max-w-screen-lg mx-auto">
-      <CustomSuspense>
-        <KeepAliveRouteOutlet
-          wrapperComponent={MemoScrollTopWrapper}
-          duration={300}
-          transition={true}
-          exclude={['/nocache-counter']}
-          aliveRef={aliveRef}
-        />
-      </CustomSuspense>
+      <div className="flex-1 container max-w-screen-lg mx-auto">
+        <CustomSuspense>
+          <KeepAliveRouteOutlet
+            wrapperComponent={MemoScrollTopWrapper}
+            duration={300}
+            transition={true}
+            exclude={['/nocache-counter']}
+            aliveRef={aliveRef}
+          />
+        </CustomSuspense>
+      </div>
     </div>
-  </div>
-);
-}
+  );
+});
 
 // remember the scroll position of the page when switching routes
 function MemoScrollTopWrapper(props: { children?: ReactNode }) {

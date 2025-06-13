@@ -1,4 +1,5 @@
 import { PerformanceMonitoringLayout } from "@/components/Performance";
+import ZustandLayout from './ZustandNodeCacheKeepAlive';
 import ContextLayout from "./ContextNodeCacheKeepAlive";
 import ReactPortalKeepAliveLayout from "./ReactPortalKeepAlive";
 import { ProLayout } from '@ant-design/pro-components';
@@ -66,7 +67,7 @@ export default function RootLayout() {
     )}
   >
     <PerformanceMonitoringLayout>
-      <ContextLayout />
+      <ZustandLayout />
     </PerformanceMonitoringLayout>
   </ProLayout>
 );
