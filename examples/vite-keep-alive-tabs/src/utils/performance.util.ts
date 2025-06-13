@@ -1,6 +1,12 @@
 // 性能监控工具
 const timers = new Map<string, number>();
 
+export interface Performance {
+  name: string;
+  duration: number;
+  startTime: number;
+}
+
 /**
  * 开始计时
  */
@@ -77,10 +83,17 @@ export const getPerformanceReport = () => {
     name: entry.name,
     duration: entry.duration,
     startTime: entry.startTime,
-  }));
+  })) as Performance[];
 
   console.table(report);
   return report;
+};
+
+/**
+ * 计算总耗时
+ */
+export const sumOfPerformanceDuration = (performances: Performance[]) => {
+  return performances.reduce((acc, perf) => acc + perf.duration, 0);
 };
 
 /**
