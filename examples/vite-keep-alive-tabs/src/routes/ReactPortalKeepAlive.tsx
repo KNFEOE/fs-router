@@ -1,6 +1,6 @@
 import { useKeepAliveRef } from "keepalive-for-react";
 import KeepAliveRouteOutlet from "keepalive-for-react-router";
-import { useLocation } from "react-router";
+import { useLocation } from 'react-router-dom';
 import Header from "./header";
 import { memo, useEffect } from 'react';
 import type { ReactNode } from "react";

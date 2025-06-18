@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from 'react-router-dom';
 import { links } from "./links";
 import { memo } from "react";
 

@@ -1,5 +1,5 @@
 import { useEffect, useTransition } from 'react';
-import { useOutlet } from 'react-router';
+import { useOutlet } from 'react-router-dom';
 import { useActiveTab, useTabs, useTabsActions, type TabItem } from '../store/tabs.store';
 import { useCurrentPath } from './currentPath.hook';
 

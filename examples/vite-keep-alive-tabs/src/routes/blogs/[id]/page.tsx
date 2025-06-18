@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router";
+import { Link, useParams } from 'react-router-dom';
 import { blogs } from "../data";
 import { memo } from "react";
 import { PageContainer, ProCard } from "@ant-design/pro-components";
@@ -6,6 +6,7 @@ import { Button } from "antd";
 
 export default memo(function BlogDetailPage() {
 	const { id } = useParams();
+	console.log('BlogDetailPage render : ', id);
 
 	return (
 		<PageContainer

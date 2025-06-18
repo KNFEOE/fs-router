@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData } from 'react-router-dom';
 import { PageContainer, ProTable } from "@ant-design/pro-components";
 import { Button } from "antd";
 import type { loader } from "./page.data.bak";
@@ -7,7 +7,7 @@ import { blogs } from "./data";
 
 export default memo(function BlogsPage() {
 	// const blogs = useLoaderData<Awaited<ReturnType<typeof loader>>>();
-	// console.log("blogs: ", blogs);
+console.log('blogs render');
 
 	return (
 		<PageContainer
