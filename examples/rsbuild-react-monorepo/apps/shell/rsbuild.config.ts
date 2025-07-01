@@ -57,7 +57,7 @@ export default defineConfig({
 					eager: true,
 					requiredVersion: "^18.3.1",
 				},
-				"react-router": {
+				"react-router-dom": {
 					singleton: true,
 					eager: true,
 					requiredVersion: "^7.1.5",

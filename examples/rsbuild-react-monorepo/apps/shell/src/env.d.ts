@@ -1,6 +1,6 @@
 /// <reference types="@rsbuild/core/types" />
 
-import type { RouteObject } from "react-router";
+import type { RouteObject } from "react-router-dom";
 
 declare module "virtual:generated-routes" {
   export const routes: RouteObject[];

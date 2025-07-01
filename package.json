@@ -47,11 +47,10 @@
     "webpack": "^5.98.0"
   },
   "dependencies": {
-    "@react-router/dev": "^7.1.5",
     "@types/glob": "^8.1.0",
     "chokidar": "^4.0.3",
     "glob": "^11.0.1",
-    "react-router": "^7.1.5",
+    "react-router-dom": "^7.1.5",
     "typescript": "^5.0.0",
     "unplugin": "^2.1.2"
   },

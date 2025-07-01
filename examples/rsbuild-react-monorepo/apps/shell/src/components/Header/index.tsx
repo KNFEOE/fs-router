@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router";
+import { NavLink, Link } from "react-router-dom";
 
 export function Header() {
 	const className = ({ isActive }: { isActive: boolean }) =>

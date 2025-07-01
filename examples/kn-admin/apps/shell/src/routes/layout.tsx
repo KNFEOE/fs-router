@@ -1,5 +1,5 @@
 import { DashboardLayout, Label, SvgColor } from "@kn-admin/shared";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router-dom";
 
 const icon = (name: string) => (
 	<SvgColor
@@ -48,6 +48,8 @@ export const navData = [
 ];
 
 export default function Layout() {
+	const location = useLocation();
+	console.log('location', location);
 	return (
 		<DashboardLayout.DashboardLayout navData={navData}>
 			<Outlet />

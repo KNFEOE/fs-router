@@ -1,5 +1,5 @@
 import { Result } from "antd";
-import { isRouteErrorResponse, useRouteError } from "react-router";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 const Error = () => {
   const error = useRouteError();

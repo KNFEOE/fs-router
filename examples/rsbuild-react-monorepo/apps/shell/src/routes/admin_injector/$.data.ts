@@ -1,5 +1,5 @@
 import { processRoutes } from "@/utils/router.util";
-import type { RouteObject } from "react-router";
+import type { RouteObject } from "react-router-dom";
 
 export const loader = async () => {
 	console.log("admin$.data loader called");

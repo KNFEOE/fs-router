@@ -4,7 +4,7 @@ import {
 	useRoutes,
 	type RouteObject,
 	useMatches,
-} from "react-router";
+} from "react-router-dom";
 
 export interface MicroAppGatewayProps {
 	prefix: string;

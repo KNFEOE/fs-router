@@ -4,7 +4,7 @@ import {
 	type NavigateOptions,
 	generatePath,
 	type PathParam,
-} from "react-router";
+} from "react-router-dom";
 import type { RouteTypes } from "../types/route-type";
 
 export interface NavigationOptions extends NavigateOptions {}

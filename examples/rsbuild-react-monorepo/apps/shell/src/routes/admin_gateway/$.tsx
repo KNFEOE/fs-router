@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { RouteObject } from "react-router";
+import { RouteObject } from "react-router-dom";
 import { MicroAppGateway } from "@/components/MicroAppGateway";
 import { processRoutes } from "@/utils/router.util";
 

@@ -1,4 +1,4 @@
-import { useLoaderData, useMatches } from "react-router";
+import { useLoaderData, useMatches } from "react-router-dom";
 import type { loader } from "./page.data";
 
 const Page = () => {

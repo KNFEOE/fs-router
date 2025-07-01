@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { Outlet, useLoaderData } from "react-router";
+import { Outlet, useLoaderData } from "react-router-dom";
 import "./global.css";
 import type { loader as layoutLoader } from "./layout.data";
 

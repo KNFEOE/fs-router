@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom-dom';
 import { startTimer, endTimer } from '@/utils/performance.util';
 
 export interface RoutePerformanceData {

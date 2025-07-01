@@ -1,4 +1,4 @@
-import type { LoaderFunctionArgs } from "react-router";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import { users } from "../data";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {

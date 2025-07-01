@@ -1,5 +1,5 @@
 // SmartLink.tsx
-import { Link as BaseLink, NavLink as BaseNavLink, LinkProps, NavLinkProps, useResolvedPath } from 'react-router';
+import { Link as BaseLink, NavLink as BaseNavLink, LinkProps, NavLinkProps, useResolvedPath } from 'react-router-dom';
 import { namespace } from '@/routes/layout.data';
 
 export const Link = ({ to, ...props }: LinkProps) => {

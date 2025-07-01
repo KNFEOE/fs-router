@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router";
+import { useRouteError } from "react-router-dom";
 
 const ErrorBoundary = () => {
 	const error = useRouteError() as Response;

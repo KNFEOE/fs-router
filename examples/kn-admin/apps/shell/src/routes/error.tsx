@@ -1,3 +1,3 @@
 export default function () {
-	return <div>Error</div>;
+	return <div>Errorxx</div>;
 }

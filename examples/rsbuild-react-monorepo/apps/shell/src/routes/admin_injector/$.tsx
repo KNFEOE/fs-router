@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { loader } from "./$.data";
 import { MicroApp } from "@/components/MicroApp";
-import { useLoaderData } from "react-router";
+import { useLoaderData } from "react-router-dom";
 
 const AdminContext = React.createContext({
 	prefix: "admin",

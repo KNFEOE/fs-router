@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData } from "react-router-dom";
 import type { loader as usersLayoutLoader } from "./page.data";
 
 const Page = () => {

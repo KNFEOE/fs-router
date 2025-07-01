@@ -8,7 +8,7 @@ import {
   type PropsWithChildren,
 } from 'react';
 import { TabsManagerContext, type TabItem } from "./provider";
-import { useLocation, useOutlet } from 'react-router-dom';
+import { useLocation, useOutlet } from 'react-router-dom-dom';
 
 export const TabsManager = memo(({ children }: PropsWithChildren) => {
   const outlet = useOutlet();

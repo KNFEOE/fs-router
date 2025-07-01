@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouteInjector } from '@/contexts/router.context';
-import type { RouteObject } from 'react-router';
+import type { RouteObject } from 'react-router-dom';
 
 interface IRouteInjectorProps {
   routes: RouteObject[];

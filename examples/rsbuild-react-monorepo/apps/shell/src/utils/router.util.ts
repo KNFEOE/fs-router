@@ -1,4 +1,4 @@
-import type { LoaderFunction, LoaderFunctionArgs, RouteObject } from "react-router";
+import type { LoaderFunction, LoaderFunctionArgs, RouteObject } from "react-router-dom";
 
 // 路由路径处理器
 export const processRoutes = (routes: RouteObject[], namespace: string) => {

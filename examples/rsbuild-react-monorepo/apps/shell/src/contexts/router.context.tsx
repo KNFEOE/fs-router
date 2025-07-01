@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import { type RouteObject, createBrowserRouter, RouterProvider } from 'react-router';
+import { type RouteObject, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { findAndUpdateRoute } from '@/utils/router.util';
 
 interface RouterContainer {

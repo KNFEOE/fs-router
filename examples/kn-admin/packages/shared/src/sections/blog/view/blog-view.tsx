@@ -14,6 +14,7 @@ import { Iconify } from 'src/components/iconify';
 import { PostItem } from '../post-item';
 import { PostSort } from '../post-sort';
 import { PostSearch } from '../post-search';
+import { Grid2 } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -52,7 +53,7 @@ export function BlogView() {
         />
       </Box>
 
-      <Grid container spacing={3}>
+      <Grid2 container spacing={3}>
         {_posts.map((post, index) => {
           const latestPostLarge = index === 0;
           const latestPost = index === 1 || index === 2;
@@ -63,7 +64,7 @@ export function BlogView() {
             </Grid>
           );
         })}
-      </Grid>
+      </Grid2>
 
       <Pagination count={10} color="primary" sx={{ mt: 8, mx: 'auto' }} />
     </DashboardContent>
