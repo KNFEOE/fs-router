@@ -34,19 +34,23 @@
     "build": "rslib build",
     "dev": "rslib build --watch",
     "test": "vitest run",
-    "prepare": "husky"
+    "prepare": "simple-git-hooks",
+    "prepublishOnly": "pnpm test:run && pnpm build"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@rslib/core": "^0.4.1",
     "@types/node": "^22.8.1",
     "@types/react": "^18.2.48",
-    "husky": "^9.1.7",
     "react": "^18.2.0",
+    "simple-git-hooks": "2.13.0",
     "typescript": "^5.7.3",
     "vite": "^6.2.0",
     "vitest": "^3.0.5",
     "webpack": "^5.98.0"
+  },
+  "simple-git-hooks": {
+    "pre-push": "pnpm test"
   },
   "dependencies": {
     "@types/glob": "^8.1.0",
