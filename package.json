@@ -35,7 +35,7 @@
     "dev": "rslib build --watch",
     "test": "vitest run",
     "prepare": "simple-git-hooks",
-    "prepublishOnly": "pnpm test:run && pnpm build"
+    "prepublishOnly": "pnpm test && pnpm build"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
