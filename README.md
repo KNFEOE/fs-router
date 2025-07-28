@@ -25,12 +25,13 @@ pnpm add @feoe/fs-router
 
 ### 1. 配置构建工具插件
 
-**Vite**
+**Vite** - See the example at [examples/vite-keep-alive-tabs](examples/vite-keep-alive-tabs/vite.config.ts)
+
 ```typescript
 // vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { fileBasedRouter } from '@feoe/fs-router/vite'
+import { FileBasedRouterVite as fileBasedRouter } from '@feoe/fs-router/vite'
 
 export default defineConfig({
   plugins: [
@@ -43,10 +44,45 @@ export default defineConfig({
 })
 ```
 
+**Rspack/Rsbuild** - See more examples:
+- [examples/kn-admin](examples/kn-admin/apps/shell/rsbuild.config.ts)
+- [examples/rsbuild-react-monorepo](examples/rsbuild-react-monorepo/apps/shell/rsbuild.config.ts)
+
+```javascript
+// rspack.config.ts
+const { FileBasedRouterRspack as fileBasedRouter } = require('@feoe/fs-router/webpack')
+
+module.exports = {
+  plugins: [
+    fileBasedRouter({
+      routesDirectory: 'src/routes',
+      generatedRoutesPath: 'src/routes.tsx',
+
+      // if type auto-generate was needed
+      enableGeneration: true,
+      typeGenerateOptions: {
+        routesTypeFile: "src/routes-type.ts",
+        // for Micro-FrontEnds App
+        routesDirectories: [
+          {
+            path: path.join(__dirname, "../shell/src/routes"),
+          },
+          {
+            prefix: "admin",
+            path: path.join(__dirname, "src/routes"),
+          },
+        ],
+      },
+    })
+  ]
+}
+```
+
 **Webpack**
+
 ```javascript
 // webpack.config.js
-const { fileBasedRouter } = require('@feoe/fs-router/webpack')
+const { FileBasedRouterWebpack as fileBasedRouter } = require('@feoe/fs-router/webpack')
 
 module.exports = {
   plugins: [
@@ -83,7 +119,7 @@ import { routes } from './routes'
 
 const router = createBrowserRouter(routes)
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root' as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
