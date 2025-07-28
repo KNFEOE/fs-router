@@ -135,7 +135,16 @@ ReactDOM.createRoot(document.getElementById('root' as HTMLElement).render(
 
 ## 🔗 相关链接
 
-了解更多见 [File Route Conventions & Runtime Router 基于文件的约定式路由 & 运行时路由](https://www.notion.so/mountainwu/File-Route-Conventions-Runtime-Router-194320d1c0fc80899959de01f087f7e3)
+- 了解更多见 [File Route Conventions & Runtime Router 基于文件的约定式路由 & 运行时路由](https://www.notion.so/mountainwu/File-Route-Conventions-Runtime-Router-194320d1c0fc80899959de01f087f7e3)
+- [Modern.js 约定式路由](https://modernjs.dev/zh/guides/basic-features/routes.html#%E8%B7%AF%E7%94%B1)
+
+## Inspiration & Thanks
+
+- [modern.js](https://github.com/web-infra-dev/modern.js) - 这是一个极重的 Runtime，因为想做的事情太多了。SSR / SSR-Streaming / CSR / SPR / MPR / 约定式路由 / 注册式路由 等等，更关键的是，你不可能去改它。本项目完全是因为改不动 Modern.js 但又觉得其内置的约定式路由设计不错所以开发了这个，🤣
+- [Next.js App Router](https://nextjs.org/docs/app) - 如果用 React SSR 这应该是最佳实践
+- [Remix-run File System Route Convention](https://remix.run/docs/en/main/start/v2#file-system-route-convention) - Remix-run 版本的约定式路由
+- [@TanStack/react-router File-Based Routing](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) - 在类型声明方面，参考了很多 TanStack 的实现
+- [@loadable/component](https://github.com/gregberge/loadable-components) - The recommended Code Splitting library for React ✂️✨，内部懒加载默认使用该组件
 
 ## 📄 许可证
 
