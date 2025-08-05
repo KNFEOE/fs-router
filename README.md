@@ -50,7 +50,7 @@ export default defineConfig({
 
 ```javascript
 // rspack.config.ts
-const { FileBasedRouterRspack as fileBasedRouter } = require('@feoe/fs-router/webpack')
+const { FileBasedRouterRspack as fileBasedRouter } = require('@feoe/fs-router/rspack')
 
 module.exports = {
   plugins: [
