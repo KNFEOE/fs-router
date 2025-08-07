@@ -1,4 +1,4 @@
-import { BrowserRouter, useRoutes } from 'react-router-dom-dom';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 import { routes } from './routes';
 import './global.css';
 

@@ -35,14 +35,19 @@
     "dev": "rslib build --watch",
     "test": "vitest run",
     "prepare": "simple-git-hooks",
-    "prepublishOnly": "pnpm test && pnpm build"
+    "prepublishOnly": "pnpm test && pnpm build",
+    "docs:dev": "rspress dev docs",
+    "docs:build": "rspress build docs",
+    "docs:preview": "rspress preview docs"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@rslib/core": "^0.4.1",
+    "@rspress/theme-default": "^1.45.1",
     "@types/node": "^22.8.1",
     "@types/react": "^18.2.48",
     "react": "^18.2.0",
+    "rspress": "^1.45.1",
     "simple-git-hooks": "2.13.0",
     "typescript": "^5.7.3",
     "vite": "^6.2.0",

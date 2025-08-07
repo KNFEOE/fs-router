@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useActiveTab, useTabPending, type TabItem } from '@/store/tabs.store';
 import { cn } from "@/utils/tailwind.util";
-import { Link } from 'react-router-dom-dom';
+import { Link } from 'react-router-dom';
 
 export const Tab = memo((tab: TabItem) => {
 	const activeTab = useActiveTab();

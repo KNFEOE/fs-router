@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "概述"
+  },
+  {
+    "type": "file",
+    "name": "vite-integration",
+    "label": "Vite 集成"
+  },
+  {
+    "type": "file",
+    "name": "rspack-integration",
+    "label": "Rspack 集成"
+  },
+  {
+    "type": "file",
+    "name": "webpack-integration",
+    "label": "Webpack 集成"
+  }
+]

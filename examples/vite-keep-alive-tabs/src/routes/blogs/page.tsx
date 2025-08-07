@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link, useLoaderData } from 'react-router-dom-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { PageContainer, ProTable } from "@ant-design/pro-components";
 import { Button } from "antd";
 import type { loader } from "./page.data.bak";

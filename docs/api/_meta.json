@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "概述"
+  },
+  {
+    "type": "file",
+    "name": "plugins",
+    "label": "插件 API"
+  },
+  {
+    "type": "file",
+    "name": "hooks",
+    "label": "Hook API"
+  },
+  {
+    "type": "file",
+    "name": "types",
+    "label": "类型定义"
+  }
+]

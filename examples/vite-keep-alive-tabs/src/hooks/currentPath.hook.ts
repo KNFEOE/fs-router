@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom-dom';
+import { useLocation } from 'react-router-dom';
 
 export const useCurrentPath = () => {
   const location = useLocation();

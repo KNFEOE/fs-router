@@ -1,0 +1,22 @@
+[
+  {
+    "text": "指南",
+    "link": "/guide/start/getting-started",
+    "activeMatch": "^/guide/"
+  },
+  {
+    "text": "示例",
+    "link": "/examples/",
+    "activeMatch": "^/examples/"
+  },
+  {
+    "text": "API",
+    "link": "/api/",
+    "activeMatch": "^/api/"
+  },
+  {
+    "text": "贡献",
+    "link": "/contributing/",
+    "activeMatch": "^/contributing/"
+  }
+]

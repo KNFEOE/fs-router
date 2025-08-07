@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "usage",
+    "label": "基础使用"
+  },
+  {
+    "type": "file",
+    "name": "file-based-routing",
+    "label": "约定式路由"
+  },
+  {
+    "type": "file",
+    "name": "dynamic-routes",
+    "label": "动态路由"
+  }
+]

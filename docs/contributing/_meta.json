@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "概述"
+  },
+  {
+    "type": "file",
+    "name": "development",
+    "label": "开发环境"
+  },
+  {
+    "type": "file",
+    "name": "release",
+    "label": "发布流程"
+  }
+]

@@ -1,0 +1,336 @@
+/* 文件树组件样式 */
+
+.file-tree-container {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--rp-c-divider);
+  background: var(--rp-c-bg);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.file-tree-header {
+  padding: 1rem 1.25rem;
+  background: var(--rp-c-bg-soft);
+  border-bottom: 1px solid var(--rp-c-divider-light);
+}
+
+.file-tree-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--rp-c-text-1);
+}
+
+.file-tree-content {
+  padding: 0.75rem 0;
+  background: var(--rp-c-bg);
+  font-family: var(--rp-font-family-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.file-tree-item {
+  position: relative;
+}
+
+.file-tree-node {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.file-tree-node:hover {
+  background: var(--rp-c-bg-soft);
+}
+
+.file-tree-node.highlighted {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid var(--rp-c-brand);
+  padding-left: calc(1.25rem - 3px);
+}
+
+.file-tree-node.expandable {
+  cursor: pointer;
+}
+
+.file-tree-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.file-tree-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  color: var(--rp-c-text-3);
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.file-tree-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.file-tree-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.file-tree-name {
+  color: var(--rp-c-text-1);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-tree-description {
+  color: var(--rp-c-text-3);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-left: auto;
+  padding-left: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.file-tree-children {
+  position: relative;
+}
+
+.file-tree-children::before {
+  content: '';
+  position: absolute;
+  left: 1.25rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--rp-c-divider-light);
+}
+
+.file-tree-footer {
+  padding: 0.75rem 1.25rem;
+  background: var(--rp-c-bg-soft);
+  border-top: 1px solid var(--rp-c-divider-light);
+}
+
+.file-tree-legend {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--rp-c-text-3);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.legend-icon {
+  font-size: 0.875rem;
+}
+
+.legend-text {
+  font-weight: 500;
+}
+
+.file-tree-empty {
+  padding: 3rem;
+  text-align: center;
+  color: var(--rp-c-text-3);
+  background: var(--rp-c-bg-soft);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* 暗色主题适配 */
+[data-theme='dark'] .file-tree-container {
+  background: var(--rp-c-bg-soft);
+  border-color: var(--rp-c-divider);
+}
+
+[data-theme='dark'] .file-tree-header {
+  background: var(--rp-c-bg-mute);
+  border-bottom-color: var(--rp-c-divider);
+}
+
+[data-theme='dark'] .file-tree-content {
+  background: var(--rp-c-bg-soft);
+}
+
+[data-theme='dark'] .file-tree-node:hover {
+  background: var(--rp-c-bg-mute);
+}
+
+[data-theme='dark'] .file-tree-node.highlighted {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+[data-theme='dark'] .file-tree-children::before {
+  background: var(--rp-c-divider);
+}
+
+[data-theme='dark'] .file-tree-footer {
+  background: var(--rp-c-bg-mute);
+  border-top-color: var(--rp-c-divider);
+}
+
+[data-theme='dark'] .file-tree-empty {
+  background: var(--rp-c-bg-mute);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .file-tree-container {
+    margin: 1rem 0;
+    border-radius: 6px;
+  }
+
+  .file-tree-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .file-tree-title {
+    font-size: 0.9rem;
+  }
+
+  .file-tree-content {
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+
+  .file-tree-node {
+    padding: 0.2rem 1rem;
+  }
+
+  .file-tree-node.highlighted {
+    padding-left: calc(1rem - 3px);
+  }
+
+  .file-tree-content {
+    gap: 0.375rem;
+  }
+
+  .file-tree-arrow {
+    width: 0.875rem;
+    height: 0.875rem;
+    font-size: 0.7rem;
+  }
+
+  .file-tree-icon {
+    font-size: 0.9rem;
+  }
+
+  .file-tree-description {
+    font-size: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .file-tree-children::before {
+    left: 1rem;
+  }
+
+  .file-tree-footer {
+    padding: 0.5rem 1rem;
+  }
+
+  .file-tree-legend {
+    gap: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .legend-item {
+    gap: 0.25rem;
+  }
+
+  .legend-icon {
+    font-size: 0.8rem;
+  }
+
+  .file-tree-empty {
+    padding: 2rem 1rem;
+  }
+}
+
+/* 平板适配 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .file-tree-header {
+    padding: 0.875rem 1.125rem;
+  }
+
+  .file-tree-node {
+    padding: 0.225rem 1.125rem;
+  }
+
+  .file-tree-node.highlighted {
+    padding-left: calc(1.125rem - 3px);
+  }
+
+  .file-tree-children::before {
+    left: 1.125rem;
+  }
+
+  .file-tree-footer {
+    padding: 0.625rem 1.125rem;
+  }
+}
+
+/* 动画效果 */
+.file-tree-children {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* 焦点样式 */
+.file-tree-node:focus {
+  outline: 2px solid var(--rp-c-brand);
+  outline-offset: -2px;
+}
+
+.file-tree-node:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 选择状态 */
+.file-tree-node:active {
+  background: var(--rp-c-bg-mute);
+}
+
+/* 连接线样式优化 */
+.file-tree-item:last-child .file-tree-children::before {
+  height: 1.5rem;
+}
+
+/* 工具提示样式 */
+.file-tree-name[title] {
+  cursor: help;
+}
+
+.file-tree-description[title] {
+  cursor: help;
+}

@@ -1,5 +1,5 @@
 import { memo, Suspense, useEffect, type PropsWithChildren } from 'react';
-import { Outlet } from 'react-router-dom-dom';
+import { Outlet } from 'react-router-dom';
 import { startTimer, endTimer } from '@/utils/performance.util';
 import { useRoutePerformance } from '@/hooks/routeTransition.hook';
 import { PerformancePanel } from '../RouteTransition';

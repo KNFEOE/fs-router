@@ -1,31 +1,52 @@
-# FileBasedReactRouter
+# @feoe/fs-router
 
-一个基于文件的约定式路由 & 运行时路由实现，为 React 应用提供类型安全的路由解决方案。
+<div align="center">
+
+[![npm version](https://img.shields.io/npm/v/@feoe/fs-router.svg)](https://www.npmjs.com/package/@feoe/fs-router)
+[![npm downloads](https://img.shields.io/npm/dm/@feoe/fs-router.svg)](https://www.npmjs.com/package/@feoe/fs-router)
+[![license](https://img.shields.io/npm/l/@feoe/fs-router.svg)](https://github.com/knfeoe/fs-router/blob/main/LICENSE)
+
+**基于文件的约定式路由 & 运行时路由实现**
+
+为 React 应用提供类型安全的路由解决方案
+
+[文档](https://fs-router.feoe.dev) | [快速开始](#快速开始) | [示例](#示例)
+
+</div>
 
 ## ✨ 特性
 
 - 🚀 **约定式路由** - 基于文件系统的路由约定，零配置即可使用
+- 📝 **最佳实践** - 自带 React Router v6+ BrowserRouter/DataRouter 组件模块化
 - 🔒 **类型安全** - 完整的 TypeScript 支持，提供类型安全的导航
-- ⚡ **高性能** - 支持代码分割和懒加载，优化应用性能
+- ⚡ **高性能** - 默认开启代码分割和懒加载，优化应用性能
 - 🔧 **多构建工具支持** - 支持 Vite、Webpack、Rspack 等主流构建工具
-- 📦 **插件化架构** - 易于扩展和自定义
-- 🔄 **热更新** - 开发时文件变更自动重新生成路由
+- 🔄 **热更新** - 开发时文件变更自动重新生成路由文件
 
 ## 📦 安装
 
 ```bash
-npm install @feoe/fs-router
+npm install @feoe/fs-router -D
 # 或
-yarn add @feoe/fs-router
+yarn add @feoe/fs-router -D
 # 或
-pnpm add @feoe/fs-router
+pnpm add @feoe/fs-router -D
 ```
+
+## 系统要求
+
+- Node.js 16.0 或更高版本
+- React 18.0 或更高版本
+- TypeScript 4.5 或更高版本（可选，但推荐）
+- React Router 6.0 或更高版本
 
 ## 🚀 快速开始
 
-### 1. 配置构建工具插件
+### 1. 配置构建工具
 
-**Vite** - See the example at [examples/vite-keep-alive-tabs](examples/vite-keep-alive-tabs/vite.config.ts)
+根据你使用的构建工具，选择对应的配置方式：
+
+#### Vite
 
 ```typescript
 // vite.config.ts
@@ -44,41 +65,23 @@ export default defineConfig({
 })
 ```
 
-**Rspack/Rsbuild** - See more examples:
-- [examples/kn-admin](examples/kn-admin/apps/shell/rsbuild.config.ts)
-- [examples/rsbuild-react-monorepo](examples/rsbuild-react-monorepo/apps/shell/rsbuild.config.ts)
+#### Rspack
 
 ```javascript
-// rspack.config.ts
+// rspack.config.js
 const { FileBasedRouterRspack as fileBasedRouter } = require('@feoe/fs-router/rspack')
 
 module.exports = {
   plugins: [
     fileBasedRouter({
       routesDirectory: 'src/routes',
-      generatedRoutesPath: 'src/routes.tsx',
-
-      // if type auto-generate was needed
-      enableGeneration: true,
-      typeGenerateOptions: {
-        routesTypeFile: "src/routes-type.ts",
-        // for Micro-FrontEnds App
-        routesDirectories: [
-          {
-            path: path.join(__dirname, "../shell/src/routes"),
-          },
-          {
-            prefix: "admin",
-            path: path.join(__dirname, "src/routes"),
-          },
-        ],
-      },
+      generatedRoutesPath: 'src/routes.tsx'
     })
   ]
 }
 ```
 
-**Webpack**
+#### Webpack
 
 ```javascript
 // webpack.config.js
@@ -96,56 +99,146 @@ module.exports = {
 
 ### 2. 创建路由文件
 
+在 `src/routes` 目录下创建页面文件：
+
 ```
 src/routes/
-├── layout.tsx          # 根布局
-├── page.tsx            # 首页
+├── layout.tsx          # 根布局 (必须配置)
+├── page.tsx            # 首页 (/)
 ├── about/
-│   └── page.tsx        # /about 页面
-├── user/
-│   ├── layout.tsx      # 用户页面布局
-│   ├── page.tsx        # /user 页面
-│   └── [id]/
-│       └── page.tsx    # /user/:id 页面
-└── error.tsx           # 错误页面
+│   └── page.tsx        # 关于页面 (/about)
+└── users/
+    ├── layout.tsx      # 用户模块布局
+    ├── page.tsx        # 用户列表 (/users)
+    └── [id]/
+        └── page.tsx    # 用户详情 (/users/:id)
 ```
 
-### 3. 使用生成的路由
+### 3. 创建根布局
 
-```typescript
+```tsx
+// src/routes/layout.tsx
+import { Outlet } from 'react-router-dom'
+
+export default function Layout() {
+  return (
+    <div>
+      <nav>
+        <a href="/">首页</a>
+        <a href="/about">关于</a>
+        <a href="/users">用户</a>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  )
+}
+```
+
+### 4. 创建页面组件
+
+```tsx
+// src/routes/page.tsx
+export default function HomePage() {
+  return (
+    <div>
+      <h1>欢迎使用 @feoe/fs-router</h1>
+      <p>这是基于文件的约定式路由示例</p>
+    </div>
+  )
+}
+```
+
+### 5. 在应用中使用
+
+```tsx
 // src/main.tsx
-import { createBrowserRouter } from 'react-router-dom'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { routes } from './routes'
 
 const router = createBrowserRouter(routes)
 
-ReactDOM.createRoot(document.getElementById('root' as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
 )
 ```
 
+## 📖 核心概念
+
+### 约定式路由
+
+基于文件系统的路由约定，通过文件和目录结构自动生成路由配置：
+
+- `page.tsx` - 页面组件
+- `layout.tsx` - 布局组件
+- `loading.tsx` - 加载状态组件
+- `error.tsx` - 错误边界组件
+- `loader.ts` - 数据加载器
+
+### 动态路由
+
+使用方括号创建动态路由：
+
+```
+src/routes/
+├── users/
+│   ├── [id]/
+│   │   └── page.tsx    # /users/:id
+│   └── [id]/
+│       └── edit/
+│           └── page.tsx # /users/:id/edit
+```
+
+### 类型安全
+
+自动生成类型定义，提供完整的 TypeScript 支持：
+
+```tsx
+import { useNavigate } from 'react-router-dom'
+
+const navigate = useNavigate()
+
+// 类型安全的导航
+navigate('/users/123')  // ✅ 正确
+navigate('/invalid')    // ❌ TypeScript 错误
+```
+
+## 🎯 示例
+
+查看完整的示例项目：
+
+- [Vite + Keep Alive Tabs](./examples/vite-keep-alive-tabs) - 带有标签页保活功能的 Vite 应用
+- [Rspack Admin Dashboard](./examples/kn-admin) - 基于 Rspack 的管理后台应用
+
 ## 📚 文档
 
-- [设计文档](./docs/DESIGN.md) - 架构设计和实现细节
-- [用户指南](./docs/GUIDE.md) - 详细的使用说明和 API 参考
-- [约定式路由规则](./docs/GUIDE.md#约定式路由) - 文件命名约定
-- [动态路由](./docs/GUIDE.md#动态路由) - 参数路由的使用
+完整的文档和 API 参考请访问：[https://fs-router.feoe.dev](https://fs-router.feoe.dev)
 
-## 🔗 相关链接
+- [介绍](https://fs-router.feoe.dev/guide/start/introduction)
+- [快速开始](https://fs-router.feoe.dev/guide/start/getting-started)
+- [基础用法](https://fs-router.feoe.dev/guide/basic/file-based-routing)
+- [高级特性](https://fs-router.feoe.dev/guide/advanced/type-safety)
+- [API 参考](https://fs-router.feoe.dev/api)
 
-- 了解更多见 [File Route Conventions & Runtime Router 基于文件的约定式路由 & 运行时路由](https://www.notion.so/mountainwu/File-Route-Conventions-Runtime-Router-194320d1c0fc80899959de01f087f7e3)
-- [Modern.js 约定式路由](https://modernjs.dev/zh/guides/basic-features/routes.html#%E8%B7%AF%E7%94%B1)
+## 🤝 贡献
 
-## Inspiration & Thanks
+欢迎贡献代码！请查看 [贡献指南](./docs/contributing/index.md) 了解如何参与项目开发。
 
-- [modern.js](https://github.com/web-infra-dev/modern.js) - 这是一个极重的 Runtime，因为想做的事情太多了。SSR / SSR-Streaming / CSR / SPR / MPR / 约定式路由 / 注册式路由 等等，更关键的是，你不可能去改它。本项目完全是因为改不动 Modern.js 但又觉得其内置的约定式路由设计不错所以开发了这个，🤣
-- [Next.js App Router](https://nextjs.org/docs/app) - 如果用 React SSR 这应该是最佳实践
-- [Remix-run File System Route Convention](https://remix.run/docs/en/main/start/v2#file-system-route-convention) - Remix-run 版本的约定式路由
-- [@TanStack/react-router File-Based Routing](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) - 在类型声明方面，参考了很多 TanStack 的实现
-- [@loadable/component](https://github.com/gregberge/loadable-components) - The recommended Code Splitting library for React ✂️✨，内部懒加载默认使用该组件
+## 🙏 致谢
+
+本项目的灵感来源于以下优秀的开源项目：
+
+- [Modern.js](https://github.com/web-infra-dev/modern.js) - 约定式路由设计参考
+- [Next.js App Router](https://nextjs.org/docs/app) - 文件系统路由约定
+- [Remix File System Route Convention](https://remix.run/docs/en/main/start/v2#file-system-route-convention)
+- [@TanStack/react-router](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) - 类型安全实现参考
+- [@loadable/component](https://github.com/gregberge/loadable-components) - 代码分割实现
 
 ## 📄 许可证
 
-MIT
+[MIT](./LICENSE) © [feoe](https://github.com/feoe)

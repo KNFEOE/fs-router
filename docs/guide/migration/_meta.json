@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "概述"
+  },
+  {
+    "type": "file",
+    "name": "from-react-router",
+    "label": "从 React Router 迁移"
+  }
+]

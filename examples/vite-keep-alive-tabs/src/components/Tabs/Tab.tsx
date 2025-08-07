@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { useTabsManager, type TabItem } from "../TabsManager/provider"
 import { cn } from "@/utils/tailwind.util"
-import { Link } from 'react-router-dom-dom';
+import { Link } from 'react-router-dom';
 
 export const Tab = memo((tab: TabItem) => {
   const { activeTab, isPending } = useTabsManager();

@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "advanced",
+    "label": "进阶功能"
+  },
+  {
+    "type": "file",
+    "name": "data-fetch",
+    "label": "数据获取"
+  },
+  {
+    "type": "file",
+    "name": "type-safety",
+    "label": "类型安全"
+  },
+  {
+    "type": "file",
+    "name": "best-practices",
+    "label": "最佳实践"
+  }
+]

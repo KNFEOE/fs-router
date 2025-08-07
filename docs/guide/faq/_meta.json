@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "概述"
+  },
+  {
+    "type": "file",
+    "name": "common-issues",
+    "label": "常见问题"
+  },
+  {
+    "type": "file",
+    "name": "performance",
+    "label": "性能问题"
+  },
+  {
+    "type": "file",
+    "name": "troubleshooting",
+    "label": "故障排除"
+  }
+]
