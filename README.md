@@ -20,8 +20,8 @@
 - 📝 **最佳实践** - 自带 React Router v6+ BrowserRouter/DataRouter 组件模块化
 - 🔒 **类型安全** - 完整的 TypeScript 支持，提供类型安全的导航
 - ⚡ **高性能** - 默认开启代码分割和懒加载，优化应用性能
-- 🔧 **多构建工具支持** - 支持 Vite、Webpack、Rspack 等主流构建工具
 - 🔄 **热更新** - 开发时文件变更自动重新生成路由文件
+- 🔧 **多构建工具支持** - 支持 Vite、Webpack、Rspack 等主流构建工具
 
 ## 📦 安装
 
@@ -51,12 +51,10 @@ pnpm add @feoe/fs-router -D
 ```typescript
 // vite.config.ts
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import { FileBasedRouterVite as fileBasedRouter } from '@feoe/fs-router/vite'
 
 export default defineConfig({
   plugins: [
-    react(),
     fileBasedRouter({
       routesDirectory: 'src/routes',
       generatedRoutesPath: 'src/routes.tsx'
@@ -175,7 +173,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 基于文件系统的路由约定，通过文件和目录结构自动生成路由配置：
 
 - `page.tsx` - 页面组件
+- `page.data.ts` - 页面数据加载 loader
 - `layout.tsx` - 布局组件
+- `layout.data.ts` - 布局数据加载 loader
 - `loading.tsx` - 加载状态组件
 - `error.tsx` - 错误边界组件
 - `loader.ts` - 数据加载器
@@ -219,11 +219,11 @@ navigate('/invalid')    // ❌ TypeScript 错误
 
 完整的文档和 API 参考请访问：[https://fs-router.feoe.dev](https://fs-router.feoe.dev)
 
-- [介绍](./docs/guide/start/introduction)
-- [快速开始](./docs/guide/start/getting-started)
-- [基础用法](./docs/guide/basic/file-based-routing)
-- [高级特性](./docs/guide/advanced/type-safety)
-- [API 参考](./docs/api/index)
+- [介绍](/docs/guide/start/introduction.md)
+- [快速开始](/docs/guide/start/getting-started.md)
+- [基础用法](/docs/guide/basic/file-based-routing.md)
+- [高级特性](/docs/guide/advanced/type-safety.md)
+- [API 参考](/docs/api/index.md)
 
 ## 🤝 贡献
 
