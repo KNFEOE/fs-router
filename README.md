@@ -219,11 +219,11 @@ navigate('/invalid')    // ❌ TypeScript 错误
 
 完整的文档和 API 参考请访问：[https://fs-router.feoe.dev](https://fs-router.feoe.dev)
 
-- [介绍](https://fs-router.feoe.dev/guide/start/introduction)
-- [快速开始](https://fs-router.feoe.dev/guide/start/getting-started)
-- [基础用法](https://fs-router.feoe.dev/guide/basic/file-based-routing)
-- [高级特性](https://fs-router.feoe.dev/guide/advanced/type-safety)
-- [API 参考](https://fs-router.feoe.dev/api)
+- [介绍](./docs/guide/start/introduction)
+- [快速开始](./docs/guide/start/getting-started)
+- [基础用法](./docs/guide/basic/file-based-routing)
+- [高级特性](./docs/guide/advanced/type-safety)
+- [API 参考](./docs/api/index)
 
 ## 🤝 贡献
 
