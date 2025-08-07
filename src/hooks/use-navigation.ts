@@ -7,21 +7,21 @@ import {
 } from "react-router-dom";
 import type { RouteTypes } from "../types/route-type";
 
-export interface NavigationOptions extends NavigateOptions {}
+export interface NavigationOptions extends NavigateOptions { }
 
 type OptionalParams<T extends string> = T extends `${infer Part}/${infer Rest}`
 	? (Part extends `:${infer Name}?` ? Name : never) | OptionalParams<Rest>
 	: T extends `:${infer Name}?`
-		? Name
-		: never;
+	? Name
+	: never;
 
 type RouteParams<Path extends string> = {
 	[P in OptionalParams<Path>]?: string | number | boolean;
 } & {
 	[P in Exclude<PathParam<Path>, OptionalParams<Path>>]:
-		| string
-		| number
-		| boolean;
+	| string
+	| number
+	| boolean;
 };
 
 type PathParameters<Path extends string> = Exclude<
@@ -41,7 +41,7 @@ export function useNavigation() {
 			const [path, params, query] = args;
 			let href = generatePath(
 				path,
-				params as {
+				params as unknown as {
 					[key in PathParam<Path>]: string | null;
 				},
 			);

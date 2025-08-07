@@ -1,5 +1,5 @@
 export const DefaultErrorBoundary = `
-import { useRouteError, isRouteErrorResponse } from 'react-router-dom-dom';
+import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
 
 export function DefaultErrorBoundary() {
   const error = useRouteError();

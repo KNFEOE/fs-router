@@ -1,11 +1,13 @@
 # Local
 .DS_Store
+.kiro
 *.local
 *.log*
 
 # Dist
 node_modules
 dist/
+doc_build
 **/src/routes.tsx
 **/@mf-types
 # **/routes-type.ts
