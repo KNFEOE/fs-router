@@ -1,5 +1,5 @@
-import { resolve, isAbsolute, join } from "node:path";
-import type { GenerateRouteTypeOptions } from "../router/route-type-generator";
+import { resolve, isAbsolute } from "node:path";
+import type { TypeGenerateOptions } from "../router/route-type-generator";
 
 export interface PluginConfig {
 	/** 路由文件目录 */
@@ -20,7 +20,7 @@ export interface PluginConfig {
 	/** 是否启用默认错误边界 */
 	defaultErrorBoundary?: boolean;
 	/** 类型生成选项 */
-	typeGenerateOptions?: GenerateRouteTypeOptions;
+	typeGenerateOptions?: TypeGenerateOptions;
 }
 
 export const defaultConfig: PluginConfig = {
@@ -36,6 +36,8 @@ export const defaultConfig: PluginConfig = {
 	defaultErrorBoundary: false,
 	typeGenerateOptions: {
 		routesTypeFile: "src/routes-type.ts",
+		generateRouteParams: true,
+		generateLoaderTypes: true,
 		routesDirectories: [],
 	},
 };
