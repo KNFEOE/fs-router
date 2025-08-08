@@ -1,0 +1,51 @@
+# GitLab CI/CD 配置文件
+# 用于自动构建和部署文档到 GitLab Pages
+
+stages:
+  - build
+  - deploy
+
+# 缓存 node_modules 以加速构建
+cache:
+  paths:
+    - node_modules/
+    - .pnpm-store/
+
+# 构建阶段
+build:
+  stage: build
+  image: node:18-alpine
+  before_script:
+    # 安装 pnpm
+    - npm install -g pnpm
+    # 配置 pnpm store
+    - pnpm config set store-dir .pnpm-store
+  script:
+    # 安装依赖
+    - pnpm install --frozen-lockfile
+    # 构建文档
+    - pnpm docs:build
+  artifacts:
+    paths:
+      - doc_build/
+    expire_in: 1 hour
+  only:
+    - main
+    - master
+
+# 部署到 GitLab Pages
+pages:
+  stage: deploy
+  image: alpine:latest
+  script:
+    # GitLab Pages 需要将构建产物放在 public 目录
+    - mkdir public
+    - cp -r doc_build/* public/
+  artifacts:
+    paths:
+      - public
+  dependencies:
+    - build
+  only:
+    - main
+    - master
