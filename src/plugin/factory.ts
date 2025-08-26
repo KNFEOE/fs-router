@@ -57,7 +57,6 @@ export const unpluginRouterGeneratorFactory: UnpluginFactory<
 	};
 
 	const run = async (cb: () => Promise<unknown>) => {
-		console.log("run", ctx.config.enableGeneration);
 		if (ctx.config.enableGeneration ?? true) {
 			await cb();
 		}
