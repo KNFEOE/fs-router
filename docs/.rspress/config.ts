@@ -89,18 +89,6 @@ export default defineConfig({
 		footer: {
 			message: "基于 MIT 许可发布 | Copyright © 2024 @feoe",
 		},
-		locales: [
-			{
-				lang: "en",
-				label: "On this page",
-				outlineTitle: "ON THIS Page",
-			},
-			{
-				lang: "zh",
-				label: "大纲",
-				outlineTitle: "大纲",
-			},
-		],
 	},
 
 	// 构建配置
