@@ -13,6 +13,4 @@ doc_build
 # **/routes-type.ts
 
 # IDE
-.vscode/*
-!.vscode/extensions.json
 .idea
