@@ -1,13 +1,14 @@
-# @feoe/fs-router
-
 <div align="center">
+<img src="./docs/public/logo.svg" alt="Logo" width="64" height="64" />
+
+# @feoe/fs-router
 
 [![npm version](https://img.shields.io/npm/v/@feoe/fs-router.svg)](https://www.npmjs.com/package/@feoe/fs-router)
 [![npm downloads](https://img.shields.io/npm/dm/@feoe/fs-router.svg)](https://www.npmjs.com/package/@feoe/fs-router)
 [![license](https://img.shields.io/npm/l/@feoe/fs-router.svg)](https://github.com/knfeoe/fs-router/blob/main/LICENSE)
-[![Deploy Documentation](https://github.com/feoe/fs-router/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/feoe/fs-router/actions/workflows/deploy-docs.yml)
 
-**基于文件的约定式路由 & 运行时路由实现**
+
+**基于文件的约定式路由**
 
 为 React 应用提供类型安全的路由解决方案
 
