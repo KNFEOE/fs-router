@@ -57,11 +57,11 @@ export default defineConfig({
 			{
 				icon: "github",
 				mode: "link",
-				content: "https://github.com/feoe/fs-router",
+				content: "https://github.com/knfeoe/fs-router",
 			},
 		],
 		editLink: {
-			docRepoBaseUrl: "https://github.com/feoe/fs-router/tree/main/docs",
+			docRepoBaseUrl: "https://github.com/knfeoe/fs-router/tree/master/docs",
 			text: "📝 在 GitHub 上编辑此页",
 		},
 		lastUpdated: true,
