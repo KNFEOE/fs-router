@@ -2,7 +2,17 @@
 
 ## 自动部署
 
-本项目使用 GitHub Actions 自动部署文档到 GitHub Pages。每当代码推送到 `main` 分支时，会自动触发部署流程。
+本项目使用 GitHub Actions 自动部署文档到 GitHub Pages。每当代码推送到 `master` 分支时，会自动触发部署流程。
+
+## 首次设置
+
+**重要**：在首次部署前，需要手动启用 GitHub Pages：
+
+1. 进入仓库 Settings > Pages
+2. Source 选择 "GitHub Actions"
+3. 保存设置
+
+完成设置后，工作流会自动启用并配置 GitHub Pages。
 
 ### 部署状态
 
