@@ -16,7 +16,7 @@
 
 ### 部署状态
 
-[![Deploy Documentation](https://github.com/feoe/fs-router/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/feoe/fs-router/actions/workflows/deploy-docs.yml)
+[![Deploy Documentation](https://github.com/knfeoe/fs-router/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/knfeoe/fs-router/actions/workflows/deploy-docs.yml)
 
 ### 部署流程
 
@@ -127,6 +127,6 @@ export default defineConfig({
 
 如果遇到无法解决的部署问题，请：
 
-1. 查看 [GitHub Issues](https://github.com/feoe/fs-router/issues)
+1. 查看 [GitHub Issues](https://github.com/knfeoe/fs-router/issues)
 2. 创建新的 Issue 并提供详细的错误信息
 3. 包含 Actions 运行日志和错误截图

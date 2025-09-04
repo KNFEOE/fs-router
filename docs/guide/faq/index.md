@@ -32,7 +32,7 @@
 
 如果您遇到的问题不在此列表中，可以：
 
-1. 查看 [GitHub Issues](https://github.com/feoe/fs-router/issues)
+1. 查看 [GitHub Issues](https://github.com/knfeoe/fs-router/issues)
 2. 提交新的 Issue
 3. 参与社区讨论
 

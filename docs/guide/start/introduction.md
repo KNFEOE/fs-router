@@ -43,7 +43,7 @@ React Router 最新版本支持客户端渲染（CSR）的并行加载机制：
 1. **约定优于配置** - 通过文件系统约定减少配置，设计参考 [Modern.js](https://modernjs.dev/zh/guides/basic-features/routes.html#%E8%B7%AF%E7%94%B1), [Next.js](https://nextjs.org/docs/app/getting-started/layouts-and-pages), [Remix](https://reactrouter.com/how-to/file-route-conventions), [@TanStack/router](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) 等，了解更多见 [File Route Conventions & Runtime Router 基于文件的约定式路由 & 运行时路由](https://www.notion.so/mountainwu/File-Route-Conventions-Runtime-Router-194320d1c0fc80899959de01f087f7e3)
 2. **类型安全** - 提供完整的 TypeScript 支持，主要参考 @TanStack/router
 3. **性能优先** - 支持代码分割和懒加载
-4. **开发体验** - 热更新和快速构
+4. **开发体验** - 热更新和快速构建
 
 ## 主要概念
 

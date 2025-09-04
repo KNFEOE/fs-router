@@ -8,5 +8,5 @@
 
 ## 版本升级
 
-- 查看 [更新日志](https://github.com/feoe/fs-router/releases) 了解版本变更
+- 查看 [更新日志](https://github.com/knfeoe/fs-router/releases) 了解版本变更
 - 遵循 [语义化版本](https://semver.org/) 规范

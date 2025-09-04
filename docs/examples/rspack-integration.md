@@ -94,5 +94,5 @@ module.exports = {
 ## 完整示例
 
 查看完整的 Rspack 集成示例：
-- [基础示例](https://github.com/feoe/fs-router/tree/main/examples/kn-admin)
-- [微前端示例](https://github.com/feoe/fs-router/tree/main/examples/rsbuild-react-monorepo)
+- [基础示例](https://github.com/knfeoe/fs-router/tree/master/examples/kn-admin)
+- [微前端示例](https://github.com/knfeoe/fs-router/tree/master/examples/rsbuild-react-monorepo)

@@ -93,4 +93,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ## 完整示例
 
-查看完整的 Vite 集成示例：[GitHub 示例](https://github.com/feoe/fs-router/tree/main/examples/vite-keep-alive-tabs)
+查看完整的 Vite 集成示例：[GitHub 示例](https://github.com/knfeoe/fs-router/tree/master/examples/vite-keep-alive-tabs)
