@@ -25,22 +25,6 @@ export default defineConfig({
 
 	// 多语言配置
 	lang: "zh",
-	locales: [
-		{
-			lang: "zh",
-			label: "简体中文",
-			title: "@feoe/fs-router",
-			description:
-				"一个基于文件的约定式路由 & 运行时路由实现，为 React 应用提供类型安全的路由解决方案",
-		},
-		{
-			lang: "en",
-			label: "English",
-			title: "@feoe/fs-router",
-			description:
-				"A file-based conventional routing & runtime router implementation that provides type-safe routing solutions for React applications",
-		},
-	],
 
 	// SEO 和元数据配置
 	head: [
