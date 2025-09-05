@@ -12,7 +12,7 @@
 
 为 React 应用提供类型安全的路由解决方案
 
-[文档](https://fs-router.feoe.dev) | [快速开始](#快速开始) | [示例](#示例)
+[文档](https://knfeoe.github.io/fs-router/) | [快速开始](#快速开始) | [示例](#示例)
 
 </div>
 
@@ -219,7 +219,7 @@ navigate('/invalid')    // ❌ TypeScript 错误
 
 ## 📚 文档
 
-完整的文档和 API 参考请访问：[https://fs-router.feoe.dev](https://fs-router.feoe.dev)
+完整的文档和 API 参考请访问：[https://knfeoe.github.io/fs-router/](https://knfeoe.github.io/fs-router/)
 
 - [介绍](/docs/guide/start/introduction.md)
 - [快速开始](/docs/guide/start/getting-started.md)
