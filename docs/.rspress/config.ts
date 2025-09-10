@@ -24,7 +24,7 @@ export default defineConfig({
 	},
 
 	// 多语言配置
-	lang: "zh",
+	// lang: "zh", // 注释掉单独的 lang 配置，避免与 auto-nav-sidebar 插件冲突
 
 	// SEO 和元数据配置
 	head: [
