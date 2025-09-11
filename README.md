@@ -245,7 +245,7 @@ navigate('/invalid')    // ❌ TypeScript 错误
 - [@TanStack/react-router](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) - 类型安全实现参考
 - [@loadable/component](https://github.com/gregberge/loadable-components) - 代码分割实现
 
-## Star History
+## 🌟 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=knfeoe/fs-router)](https://www.star-history.com/#knfeoe/fs-router&Date)
 
