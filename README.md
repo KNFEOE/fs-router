@@ -1,8 +1,6 @@
 <div align="center">
 <img src="./docs/public/logo.svg" alt="Logo" width="64" height="64" />
 
-# @feoe/fs-router
-
 [![npm version](https://img.shields.io/npm/v/@feoe/fs-router.svg)](https://www.npmjs.com/package/@feoe/fs-router)
 [![npm downloads](https://img.shields.io/npm/dm/@feoe/fs-router.svg)](https://www.npmjs.com/package/@feoe/fs-router)
 [![license](https://img.shields.io/npm/l/@feoe/fs-router.svg)](https://github.com/knfeoe/fs-router/blob/main/LICENSE)
@@ -16,14 +14,20 @@
 
 </div>
 
+# What is @feoe/fs-router
+
+@feoe/fs-router is a build-time plugin that scans your file system structure and automatically generates React Router compatible route configurations. It eliminates the need to manually maintain route definitions by using file and directory naming conventions to determine your application's routing structure.
+
 ## ✨ 特性
 
-- 🚀 **约定式路由** - 基于文件系统的路由约定，零配置即可使用
-- 📝 **最佳实践** - 自带 React Router v6+ BrowserRouter/DataRouter 组件模块化
-- 🔒 **类型安全** - 完整的 TypeScript 支持，提供类型安全的导航
-- ⚡ **高性能** - 默认开启代码分割和懒加载，优化应用性能
-- 🔄 **热更新** - 开发时文件变更自动重新生成路由文件
-- 🔧 **多构建工具支持** - 支持 Vite、Webpack、Rspack 等主流构建工具
+The library provides:
+
+- 🚀 **约定式路由** - 基于文件系统的路由约定，零配置即可使用。（Convention-based routing: Route structure determined by file system layout）
+- 📝 **最佳实践** - React Router v6+ BrowserRouter/DataRouter 组件化最佳实践。
+- 🔒 **类型安全** - 完整的 TypeScript 支持，提供类型安全的导航。（Type safety: Auto-generated TypeScript definitions for routes and navigation）
+- ⚡ **高性能** - 默认开启代码分割和懒加载，优化应用性能。（Performance optimization: Built-in code splitting and lazy loading）
+- 🔄 **热更新** - 开发时文件变更自动重新生成路由文件。（Hot module reloading: Real-time route updates during development）
+- 🔧 **多构建工具支持** - 支持 Vite、Webpack、Rspack 等主流构建工具。（Universal bundler support: Works with Vite, Webpack, and Rspack via unplugin）
 
 ## 📦 安装
 
