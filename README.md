@@ -12,7 +12,7 @@
 
 为 React 应用提供类型安全的路由解决方案
 
-[文档](https://knfeoe.github.io/fs-router/) | [快速开始](#-安装) | [示例](#-示例)
+ [English Document](https://deepwiki.com/KNFEOE/fs-router) | [中文文档](https://knfeoe.github.io/fs-router/) | [快速开始](#-安装) | [示例](#-示例)
 
 </div>
 
