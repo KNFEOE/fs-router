@@ -193,16 +193,16 @@ src/routes/
 
 ### 路由组
 
-使用括号 `()` 创建路由组，不影响 URL 结构：
+使用括号 `__` 作为前缀创建路由组，不影响 URL 结构：
 
 ```
 src/routes/
-├── (auth)/
+├── __auth/
 │   ├── login/
 │   │   └── page.tsx    # /login
 │   └── register/
 │       └── page.tsx    # /register
-└── (dashboard)/
+└── __dashboard/
     ├── layout.tsx      # 仅包装 dashboard 相关路由
     ├── analytics/
     │   └── page.tsx    # /analytics
